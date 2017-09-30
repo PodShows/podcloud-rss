@@ -2,6 +2,7 @@
 import 'isomorphic-fetch'
 
 import express from 'express';
+import compression from 'compression'
 import ApolloClient, { createNetworkInterface, IntrospectionFragmentMatcher } from 'apollo-client';
 import gql from 'graphql-tag';
 import RSS from 'rss';
@@ -322,6 +323,7 @@ const client = new ApolloClient({
 const PORT = 8881;
 
 var app = express();
+app.use(compression());
 
 app.get('/', function (req, res) {
     res.redirect("https://podcloud.fr/")
