@@ -4,7 +4,8 @@
   "description": "Generating rss feeds from graphQL for podcloud",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha && codecov"
+    "test": "_mocha --compilers js:babel-core/register",
+    "test-cov": "istanbul cover npm test && codecov"
   },
   "keywords": [],
   "author": "Pof Magicfingers <pof@podcloud.fr>",
@@ -12,6 +13,7 @@
   "homepage": "https://podcloud.fr/",
   "dependencies": {
     "apollo-client": "^1.9.1",
+    "apollo-client-preset": "0.1.0-1",
     "babel-core": "^6.5.2",
     "babel-loader": "6.2.3",
     "babel-polyfill": "6.5.0",
@@ -19,7 +21,9 @@
     "express": "4.13.4",
     "graphql": "^0.11.4",
     "graphql-tools": "^1.2.3",
+    "isomorphic-fetch": "^2.2.1",
     "request-promise": "^3.0.0",
+    "rss": "^1.2.2",
     "webpack": "^3.6.0"
   },
   "devDependencies": {
