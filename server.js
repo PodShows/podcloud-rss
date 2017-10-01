@@ -327,7 +327,7 @@ const PORT = 8881;
 var app = express();
 app.use(compression());
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     let identifier = req.query.identifier
     console.log("identifier: "+identifier);
     if(empty(identifier)) {
