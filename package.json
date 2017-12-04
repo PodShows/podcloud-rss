@@ -4,9 +4,10 @@
   "description": "Generating rss feeds from graphQL for podcloud",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
-    "test": "mocha --compilers js:babel-core/register",
-    "coverage": "node_modules/.bin/babel-node node_modules/.bin/babel-istanbul cover node_modules/.bin/_mocha -- --compilers js:babel-core/register",
-    "codecov": "npm run coverage && codecov"
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "codecov": "npm run coverage && codecov",
+    "prettier": "prettier --write '{src/**/*.js,server.js}'"
   },
   "keywords": [],
   "author": "Pof Magicfingers <pof@podcloud.fr>",
@@ -34,10 +35,15 @@
     "babel-cli": "^6.5.1",
     "babel-istanbul": "^0.12.2",
     "codecov": "^2.3.0",
-    "istanbul": "^0.4.5",
-    "lodash": "^4.11.1",
+    "jest": "^21.2.1",
+    "lodash": "^4.17.4",
     "mocha": "^3.5.3",
     "nodemon": "^1.9.1",
+    "prettier": "1.8.2",
     "webpack": "^3.6.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
