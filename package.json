@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
     "test": "jest",
+    "test-watch": "jest --watch",
     "coverage": "jest --coverage",
     "codecov": "npm run coverage && codecov",
     "prettier": "prettier --write '{src/**/*.js,server.js}'"
@@ -35,11 +36,14 @@
     "babel-cli": "^6.5.1",
     "babel-istanbul": "^0.12.2",
     "codecov": "^2.3.0",
+    "eslint": "^4.12.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "jest": "^21.2.1",
     "lodash": "^4.17.4",
     "mocha": "^3.5.3",
     "nodemon": "^1.9.1",
-    "prettier": "1.8.2",
+    "prettier": "^1.8.2",
     "webpack": "^3.6.0"
   },
   "jest": {
