@@ -3,12 +3,11 @@ import "isomorphic-fetch";
 
 import express from "express";
 import compression from "compression";
-import ApolloClient, {
-  createNetworkInterface,
-  IntrospectionFragmentMatcher
-} from "apollo-client";
+
 import gql from "graphql-tag";
 import RSS from "rss";
+
+import { getFeedWithIdentifier } from "./podCloud/Feeds";
 
 const notEmpty = function(obj) {
   return typeof obj === "string" && obj.length > 0;
@@ -17,27 +16,6 @@ const notEmpty = function(obj) {
 const empty = function(obj) {
   return !notEmpty(obj);
 };
-
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData: {
-    __schema: {
-      types: [
-        {
-          kind: "INTERFACE",
-          name: "PodcastItem",
-          possibleTypes: [{ name: "Episode" }, { name: "Post" }]
-        }
-      ]
-    }
-  }
-});
-
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface({
-    uri: "http://localhost:8880/graphql"
-  }),
-  fragmentMatcher
-});
 
 const PORT = 8881;
 
@@ -53,54 +31,7 @@ app.get("*", function(req, res) {
   console.log("identifier: " + identifier);
 
   if (notEmpty(identifier)) {
-    client
-      .query({
-        query: gql`
-          query getFeed($identifier: String!) {
-            podcastForFeedWithIdentifier(identifier: $identifier) {
-              title
-              description
-              catchline
-              feed_url
-              cover_url
-              website_url
-              language
-              contact_email
-              author
-              explicit
-              tags
-              itunes_block
-              itunes_category
-              feed_redirect_url
-              copyright
-              updated_at
-              items {
-                title
-                author
-                guid
-                text_content
-                formatted_content
-                published_at
-                url
-                explicit
-                ... on Episode {
-                  cover_url
-                  enclosure {
-                    url
-                    type
-                    size
-                    duration
-                  }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          identifier
-        },
-        operationName: "getFeed"
-      })
+    getFeedWithIdentifier(identifier)
       .then(graph_res => {
         console.log(graph_res);
         let fdata = graph_res.data.podcastForFeedWithIdentifier;
