@@ -1,9 +1,4 @@
-//   "software_how_to":{
-//      "name":"Software How-To",
-//      "parent":"technology"
-//   "tv_and_film":{
-//      "name":"TV & Film"
-//   }
+/* eslint-env jest */
 
 import { buildiTunesCategory } from "./Category";
 

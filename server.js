@@ -4,10 +4,9 @@ import "isomorphic-fetch";
 import express from "express";
 import compression from "compression";
 
-import gql from "graphql-tag";
 import RSS from "rss";
 
-import { getFeedWithIdentifier } from "./podCloud/Feeds";
+import FeedsAPI from "./podCloud/FeedsAPI";
 
 const notEmpty = function(obj) {
   return typeof obj === "string" && obj.length > 0;
@@ -16,6 +15,8 @@ const notEmpty = function(obj) {
 const empty = function(obj) {
   return !notEmpty(obj);
 };
+
+const feedsAPI = new FeedsAPI();
 
 const PORT = 8881;
 
@@ -31,7 +32,8 @@ app.get("*", function(req, res) {
   console.log("identifier: " + identifier);
 
   if (notEmpty(identifier)) {
-    getFeedWithIdentifier(identifier)
+    feedsAPI
+      .getFeedWithIdentifier(identifier)
       .then(graph_res => {
         console.log(graph_res);
         let fdata = graph_res.data.podcastForFeedWithIdentifier;
