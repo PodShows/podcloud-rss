@@ -1,0 +1,8 @@
+{
+  "listen": "/tmp/podcloud.rss.preprod.sock",
+  "hosts": {
+    "podcasts": "pp.lepodcast.fr",
+    "platform": "pp.podcloud.fr",
+    "feeds": "feeds.pp.podcloud.fr"
+  }
+}
