@@ -49,6 +49,7 @@ export default class podCloudFeedsAPI {
               author
               explicit
               tags
+              disabled
               itunes_block
               itunes_category
               feed_redirect_url

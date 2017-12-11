@@ -1,0 +1,88 @@
+{
+  "default": {
+    "title": "podCloud Blog",
+    "description":
+      "Retrouvez ici les actualités et les annonces de l'équipe de podCloud. \r\nN'hésitez pas à commenter les news, on vous répondra!",
+    "catchline": "Blog officiel de podCloud",
+    "feed_url": "http://blog.podcloud.fr/rss",
+    "cover_url": "http://blog.podcloud.fr/cover.jpg",
+    "website_url": "http://blog.podcloud.fr/",
+    "language": "fr",
+    "contact_email": "team@podcloud.fr",
+    "author": "podCloud",
+    "explicit": false,
+    "tags": ["news", "blog", "podCloud"],
+    "itunes_block": true,
+    "itunes_category": "comedy",
+    "feed_redirect_url": null,
+    "disabled": false,
+    "copyright": "podCloud",
+    "updated_at": "Thu, 23 Nov 2017 10:42:12 +0000",
+    "items": [
+      {
+        "title": "Publication des statistiques du catalogue podCloud",
+        "author": "podCloud",
+        "guid": "5a16a586a9b49731e60003c7",
+        "text_content":
+          "Vous souhaitez savoir si vous faites partie d'une niche ou d'un sujet très largement couvert par la communauté ?\r\n\r\nDésormais, vous pouvez en avoir un aperçu à cette adresse : [http://assets.podcloud.fr/stats/](http://assets.podcloud.fr/stats/)",
+        "formatted_content":
+          "<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>\n<p>Désormais, vous pouvez en avoir un aperçu à cette adresse : <a href=\"http://assets.podcloud.fr/stats/\">http://assets.podcloud.fr/stats/</a></p>\n",
+        "published_at": "Thu, 23 Nov 2017 10:40:00 +0000",
+        "url":
+          "http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud",
+        "explicit": false
+      },
+      {
+        "title": "Nouvelle formule de popularité",
+        "author": "podCloud",
+        "guid": "588bbc6e6e73343ad64c0100",
+        "text_content":
+          "Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.\r\n\r\nOriginellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :\r\n\r\n![ancienne formule](http://i.imgur.com/QfVpqB0.png)\r\n\r\nOn voit bien qu'ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. \r\n\r\nDésormais on calcule tel que suit, afin d'être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :\r\n\r\n- ceux qui viennent de publier un épisode (comme anciennement)\r\n- les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)\r\n- ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)\r\n- ceux qui sont en progression d'audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)\r\n\r\nVoici donc la formule un peu simplifiée mais qui vous montre bien le principe :\r\n\r\n![nouvelle formule](http://i.imgur.com/6P3VqSm.png)\r\n\r\nNote : \r\n\r\n- δ =&gt; temps depuis [...]\r\n- Σ  =&gt; somme de [...]/nombre de [...]\r\n- Episode 1 =&gt; Première publication du flux\r\n- Episode n =&gt; dernière publication en date\r\n- Episode n-1 =&gt; avant-dernière publication en date\r\n- Episode n-2 =&gt; avant-avant-dernière publication en date\r\n\r\n\r\nIl reste toujours le \"problème\" inhérent à tout système de statistiques: il faut que l'on puisse être au courant à un moment. Voici un rappel de la méthode d'obtention des stats de téléchargements normalement puis avec podCloud:\r\n![stats](http://i.imgur.com/sqbd6mu.jpg)\r\n\r\nSi les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts \"internes\" sont avantagés. Mais il n'y a pas de solution fiable... \r\nMais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d'intérêt et l'objectif semblait déjà atteint avant. Là, il est juste amélioré.\r\n\r\nP.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d'autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !",
+        "formatted_content":
+          "<p>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.</p>\n<p>Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :</p>\n<p><img src=\"http://i.imgur.com/QfVpqB0.png\" alt=\"ancienne formule\"></p>\n<p>On voit bien qu&#39;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. </p>\n<p>Désormais on calcule tel que suit, afin d&#39;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :</p>\n<ul>\n<li>ceux qui viennent de publier un épisode (comme anciennement)</li>\n<li>les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)</li>\n<li>ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)</li>\n<li>ceux qui sont en progression d&#39;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)</li>\n</ul>\n<p>Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :</p>\n<p><img src=\"http://i.imgur.com/6P3VqSm.png\" alt=\"nouvelle formule\"></p>\n<p>Note : </p>\n<ul>\n<li>δ =&gt; temps depuis [...]</li>\n<li>Σ  =&gt; somme de [...]/nombre de [...]</li>\n<li>Episode 1 =&gt; Première publication du flux</li>\n<li>Episode n =&gt; dernière publication en date</li>\n<li>Episode n-1 =&gt; avant-dernière publication en date</li>\n<li>Episode n-2 =&gt; avant-avant-dernière publication en date</li>\n</ul>\n<p>Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&#39;on puisse être au courant à un moment. Voici un rappel de la méthode d&#39;obtention des stats de téléchargements normalement puis avec podCloud:<br><img src=\"http://i.imgur.com/sqbd6mu.jpg\" alt=\"stats\"></p>\n<p>Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&#39;y a pas de solution fiable...<br>Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&#39;intérêt et l&#39;objectif semblait déjà atteint avant. Là, il est juste amélioré.</p>\n<p>P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&#39;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</p>\n",
+        "published_at": "Fri, 27 Jan 2017 21:32:00 +0000",
+        "url": "http://blog.podcloud.fr/nouvelle-formule-de-popularite",
+        "explicit": false,
+        "enclosure": {
+          "url":
+            "http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f",
+          "type": "audio/mpeg",
+          "size": 134141511,
+          "duration": 5584
+        }
+      }
+    ]
+  },
+  "disabled": {
+    "title": "podCloud Blog",
+    "description":
+      "Retrouvez ici les actualités et les annonces de l'équipe de podCloud. \r\nN'hésitez pas à commenter les news, on vous répondra!",
+    "catchline": "Blog officiel de podCloud",
+    "feed_url": "http://blog.podcloud.fr/rss",
+    "cover_url": "http://blog.podcloud.fr/cover.jpg",
+    "website_url": "http://blog.podcloud.fr/",
+    "language": "fr",
+    "contact_email": "team@podcloud.fr",
+    "author": "podCloud",
+    "explicit": false,
+    "tags": ["news", "blog", "podCloud"],
+    "itunes_block": true,
+    "itunes_category": "comedy",
+    "feed_redirect_url": "http://example.com/newfeed.rss",
+    "copyright": "podCloud",
+    "updated_at": "Thu, 23 Nov 2017 10:42:12 +0000",
+    "disabled": true,
+    "items": [
+      {
+        "title": "Should not be shown, as feed is disabled",
+        "author": "podCloud",
+        "guid": "5a16a586a9b49731e60003c7",
+        "text_content": "Never shown",
+        "formatted_content": "Never shown",
+        "published_at": "Thu, 23 Nov 2017 10:40:00 +0000",
+        "url": "http://blog.podcloud.fr/never-shown",
+        "explicit": false
+      }
+    ]
+  }
+}

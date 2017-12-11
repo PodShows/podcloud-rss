@@ -1,17 +1,21 @@
 import RSS from "rss"
+import { notEmpty } from "./utils"
 
-export default function RSSBuilder(apiResponse) {
-  if (typeof apiResponse !== "object") return null
+import { buildiTunesCategory } from "~/iTunes/Category"
+
+export default function RSSBuilder(podcast) {
+  if (typeof podcast !== "object" || podcast === null || podcast === {})
+    return null
 
   let rss_feed = {
-    title: fdata.title,
-    description: fdata.description,
-    site_url: fdata.website_url,
-    feed_url: fdata.feed_url,
-    image_url: fdata.cover_url,
-    language: fdata.language,
-    copyright: fdata.copyright,
-    pubDate: fdata.updated_at,
+    title: podcast.title,
+    description: podcast.description,
+    site_url: podcast.website_url,
+    feed_url: podcast.feed_url,
+    image_url: podcast.cover_url,
+    language: podcast.language,
+    copyright: podcast.copyright,
+    pubDate: podcast.updated_at,
     generator: "podcloud-rss 1.0.0",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
@@ -19,54 +23,54 @@ export default function RSSBuilder(apiResponse) {
     custom_elements: [
       {
         "itunes:summary": {
-          _cdata: fdata.description.substring(0, 3950)
+          _cdata: podcast.description.substring(0, 3950)
         }
       },
       {
-        "itunes:subtitle": { _cdata: fdata.catchline.substring(0, 255) }
+        "itunes:subtitle": { _cdata: podcast.catchline.substring(0, 255) }
       },
-      { "itunes:explicit": fdata.explicit ? "yes" : "no" },
-      { "itunes:keywords": fdata.tags.concat(["podCloud"]).join(", ") },
+      { "itunes:explicit": podcast.explicit ? "yes" : "no" },
+      { "itunes:keywords": podcast.tags.concat(["podCloud"]).join(", ") },
       {
-        "itunes:author": notEmpty(fdata.author) ? fdata.author : "Anonyme"
+        "itunes:author": notEmpty(podcast.author) ? podcast.author : "Anonyme"
       },
-      { "itunes:image": { _attr: { href: fdata.cover_url } } }
+      { "itunes:image": { _attr: { href: podcast.cover_url } } }
     ]
   }
 
-  if (notEmpty(fdata.contact_email)) {
-    let webmaster = fdata.contact_email
+  if (notEmpty(podcast.contact_email)) {
+    let webmaster = podcast.contact_email
 
     let itunesOwner = []
 
-    if (notEmpty(fdata.author)) {
-      webmaster += " (" + fdata.author + ")"
-      itunesOwner.push({ "itunes:name": fdata.author })
+    if (notEmpty(podcast.author)) {
+      webmaster += " (" + podcast.author + ")"
+      itunesOwner.push({ "itunes:name": podcast.author })
     }
 
     rss_feed.webMaster = webmaster
-    itunesOwner.push({ "itunes:email": fdata.contact_email })
+    itunesOwner.push({ "itunes:email": podcast.contact_email })
     rss_feed.custom_elements.push({ "itunes:owner": itunesOwner })
   }
 
-  if (fdata.block_itunes) {
+  if (podcast.itunes_block) {
     rss_feed.custom_elements.push({ "itunes:block": "yes" })
   }
 
-  if (fdata.itunes_category) {
-    rss_feed.custom_elements.push(buildiTunesCategory(fdata.itunes_category))
+  if (podcast.itunes_category) {
+    rss_feed.custom_elements.push(buildiTunesCategory(podcast.itunes_category))
   }
 
-  if (fdata.disabled) {
+  if (podcast.disabled) {
     rss_feed.custom_elements.push({
-      "itunes:new-feed-url": fdata.feed_redirect_url
+      "itunes:new-feed-url": podcast.feed_redirect_url
     })
   }
 
   let feed = new RSS(rss_feed)
 
-  if (!fdata.disabled) {
-    fdata.items.forEach(item => {
+  if (!podcast.disabled) {
+    podcast.items.forEach(item => {
       let rss_item = {
         title: item.title,
         guid: item.guid,
@@ -101,7 +105,8 @@ export default function RSSBuilder(apiResponse) {
             }
           },
           { "itunes:summary": item.text_content.substring(0, 3999) },
-          { "itunes:summary": item.text_content.substring(0, 255) },
+          { "itunes:description": item.text_content.substring(0, 255) },
+          { "itunes:explicit": podcast.explicit ? "yes" : "no" },
           { "itunes:duration": chronic_duration }
         ]
 

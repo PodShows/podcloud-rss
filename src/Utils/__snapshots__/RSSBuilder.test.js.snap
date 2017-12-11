@@ -1,0 +1,529 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RSS Builder should produce a valid RSS feed with a feed graphql returned object disabled feed 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+    <channel>
+        <title><![CDATA[podCloud Blog]]></title>
+        <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></description>
+        <link>http://blog.podcloud.fr/</link>
+        <image>
+            <url>http://blog.podcloud.fr/cover.jpg</url>
+            <title>podCloud Blog</title>
+            <link>http://blog.podcloud.fr/</link>
+        </image>
+        <generator>podcloud-rss 1.0.0</generator>
+        <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
+        <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
+        <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
+        <copyright><![CDATA[podCloud]]></copyright>
+        <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
+        <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
+        <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
+        <itunes:author>podCloud</itunes:author>
+        <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:owner>
+            <itunes:name>podCloud</itunes:name>
+            <itunes:email>team@podcloud.fr</itunes:email>
+        </itunes:owner>
+        <itunes:block>yes</itunes:block>
+        <itunes:category text=\\"Comedy\\"/>
+        <itunes:new-feed-url>http://example.com/newfeed.rss</itunes:new-feed-url>
+    </channel>
+</rss>"
+`;
+
+exports[`RSS Builder should produce a valid RSS feed with a feed graphql returned object explicit feed 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+    <channel>
+        <title><![CDATA[podCloud Blog]]></title>
+        <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></description>
+        <link>http://blog.podcloud.fr/</link>
+        <image>
+            <url>http://blog.podcloud.fr/cover.jpg</url>
+            <title>podCloud Blog</title>
+            <link>http://blog.podcloud.fr/</link>
+        </image>
+        <generator>podcloud-rss 1.0.0</generator>
+        <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
+        <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
+        <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
+        <copyright><![CDATA[podCloud]]></copyright>
+        <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
+        <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
+        <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
+        <itunes:explicit>yes</itunes:explicit>
+        <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
+        <itunes:author>podCloud</itunes:author>
+        <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:owner>
+            <itunes:name>podCloud</itunes:name>
+            <itunes:email>team@podcloud.fr</itunes:email>
+        </itunes:owner>
+        <itunes:block>yes</itunes:block>
+        <itunes:category text=\\"Comedy\\"/>
+        <item>
+            <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
+            <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
+<p>Désormais, vous pouvez en avoir un aperçu à cette adresse : <a href=\\"http://assets.podcloud.fr/stats/\\">http://assets.podcloud.fr/stats/</a></p>
+]]></description>
+            <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
+            <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Nouvelle formule de popularité]]></title>
+            <description><![CDATA[<p>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.</p>
+<p>Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :</p>
+<p><img src=\\"http://i.imgur.com/QfVpqB0.png\\" alt=\\"ancienne formule\\"></p>
+<p>On voit bien qu&#39;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. </p>
+<p>Désormais on calcule tel que suit, afin d&#39;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :</p>
+<ul>
+<li>ceux qui viennent de publier un épisode (comme anciennement)</li>
+<li>les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)</li>
+<li>ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)</li>
+<li>ceux qui sont en progression d&#39;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)</li>
+</ul>
+<p>Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :</p>
+<p><img src=\\"http://i.imgur.com/6P3VqSm.png\\" alt=\\"nouvelle formule\\"></p>
+<p>Note : </p>
+<ul>
+<li>δ =&gt; temps depuis [...]</li>
+<li>Σ  =&gt; somme de [...]/nombre de [...]</li>
+<li>Episode 1 =&gt; Première publication du flux</li>
+<li>Episode n =&gt; dernière publication en date</li>
+<li>Episode n-1 =&gt; avant-dernière publication en date</li>
+<li>Episode n-2 =&gt; avant-avant-dernière publication en date</li>
+</ul>
+<p>Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&#39;on puisse être au courant à un moment. Voici un rappel de la méthode d&#39;obtention des stats de téléchargements normalement puis avec podCloud:<br><img src=\\"http://i.imgur.com/sqbd6mu.jpg\\" alt=\\"stats\\"></p>
+<p>Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&#39;y a pas de solution fiable...<br>Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&#39;intérêt et l&#39;objectif semblait déjà atteint avant. Là, il est juste amélioré.</p>
+<p>P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&#39;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</p>
+]]></description>
+            <link>http://blog.podcloud.fr/nouvelle-formule-de-popularite</link>
+            <guid isPermaLink=\\"false\\">588bbc6e6e73343ad64c0100</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Fri, 27 Jan 2017 21:32:00 GMT</pubDate>
+            <enclosure url=\\"http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f\\" length=\\"134141511\\" type=\\"audio/mpeg\\"/>
+            <itunes:image href=\\"undefined\\"/>
+            <itunes:summary>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :
+
+![ancienne formule](http://i.imgur.com/QfVpqB0.png)
+
+On voit bien qu&apos;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. 
+
+Désormais on calcule tel que suit, afin d&apos;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :
+
+- ceux qui viennent de publier un épisode (comme anciennement)
+- les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)
+- ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)
+- ceux qui sont en progression d&apos;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)
+
+Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :
+
+![nouvelle formule](http://i.imgur.com/6P3VqSm.png)
+
+Note : 
+
+- δ =&amp;gt; temps depuis [...]
+- Σ  =&amp;gt; somme de [...]/nombre de [...]
+- Episode 1 =&amp;gt; Première publication du flux
+- Episode n =&amp;gt; dernière publication en date
+- Episode n-1 =&amp;gt; avant-dernière publication en date
+- Episode n-2 =&amp;gt; avant-avant-dernière publication en date
+
+
+Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&apos;on puisse être au courant à un moment. Voici un rappel de la méthode d&apos;obtention des stats de téléchargements normalement puis avec podCloud:
+![stats](http://i.imgur.com/sqbd6mu.jpg)
+
+Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&apos;y a pas de solution fiable... 
+Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&apos;intérêt et l&apos;objectif semblait déjà atteint avant. Là, il est juste amélioré.
+
+P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
+            <itunes:description>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros </itunes:description>
+            <itunes:explicit>yes</itunes:explicit>
+            <itunes:duration>1:33:04</itunes:duration>
+            <itunes:author>podCloud</itunes:author>
+        </item>
+    </channel>
+</rss>"
+`;
+
+exports[`RSS Builder should produce a valid RSS feed with a feed graphql returned object explicit items in feed 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+    <channel>
+        <title><![CDATA[podCloud Blog]]></title>
+        <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></description>
+        <link>http://blog.podcloud.fr/</link>
+        <image>
+            <url>http://blog.podcloud.fr/cover.jpg</url>
+            <title>podCloud Blog</title>
+            <link>http://blog.podcloud.fr/</link>
+        </image>
+        <generator>podcloud-rss 1.0.0</generator>
+        <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
+        <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
+        <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
+        <copyright><![CDATA[podCloud]]></copyright>
+        <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
+        <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
+        <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
+        <itunes:author>podCloud</itunes:author>
+        <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:owner>
+            <itunes:name>podCloud</itunes:name>
+            <itunes:email>team@podcloud.fr</itunes:email>
+        </itunes:owner>
+        <itunes:block>yes</itunes:block>
+        <itunes:category text=\\"Comedy\\"/>
+        <item>
+            <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
+            <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
+<p>Désormais, vous pouvez en avoir un aperçu à cette adresse : <a href=\\"http://assets.podcloud.fr/stats/\\">http://assets.podcloud.fr/stats/</a></p>
+]]></description>
+            <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
+            <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Nouvelle formule de popularité]]></title>
+            <description><![CDATA[<p>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.</p>
+<p>Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :</p>
+<p><img src=\\"http://i.imgur.com/QfVpqB0.png\\" alt=\\"ancienne formule\\"></p>
+<p>On voit bien qu&#39;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. </p>
+<p>Désormais on calcule tel que suit, afin d&#39;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :</p>
+<ul>
+<li>ceux qui viennent de publier un épisode (comme anciennement)</li>
+<li>les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)</li>
+<li>ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)</li>
+<li>ceux qui sont en progression d&#39;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)</li>
+</ul>
+<p>Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :</p>
+<p><img src=\\"http://i.imgur.com/6P3VqSm.png\\" alt=\\"nouvelle formule\\"></p>
+<p>Note : </p>
+<ul>
+<li>δ =&gt; temps depuis [...]</li>
+<li>Σ  =&gt; somme de [...]/nombre de [...]</li>
+<li>Episode 1 =&gt; Première publication du flux</li>
+<li>Episode n =&gt; dernière publication en date</li>
+<li>Episode n-1 =&gt; avant-dernière publication en date</li>
+<li>Episode n-2 =&gt; avant-avant-dernière publication en date</li>
+</ul>
+<p>Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&#39;on puisse être au courant à un moment. Voici un rappel de la méthode d&#39;obtention des stats de téléchargements normalement puis avec podCloud:<br><img src=\\"http://i.imgur.com/sqbd6mu.jpg\\" alt=\\"stats\\"></p>
+<p>Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&#39;y a pas de solution fiable...<br>Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&#39;intérêt et l&#39;objectif semblait déjà atteint avant. Là, il est juste amélioré.</p>
+<p>P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&#39;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</p>
+]]></description>
+            <link>http://blog.podcloud.fr/nouvelle-formule-de-popularite</link>
+            <guid isPermaLink=\\"false\\">588bbc6e6e73343ad64c0100</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Fri, 27 Jan 2017 21:32:00 GMT</pubDate>
+            <enclosure url=\\"http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f\\" length=\\"134141511\\" type=\\"audio/mpeg\\"/>
+            <itunes:image href=\\"undefined\\"/>
+            <itunes:summary>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :
+
+![ancienne formule](http://i.imgur.com/QfVpqB0.png)
+
+On voit bien qu&apos;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. 
+
+Désormais on calcule tel que suit, afin d&apos;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :
+
+- ceux qui viennent de publier un épisode (comme anciennement)
+- les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)
+- ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)
+- ceux qui sont en progression d&apos;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)
+
+Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :
+
+![nouvelle formule](http://i.imgur.com/6P3VqSm.png)
+
+Note : 
+
+- δ =&amp;gt; temps depuis [...]
+- Σ  =&amp;gt; somme de [...]/nombre de [...]
+- Episode 1 =&amp;gt; Première publication du flux
+- Episode n =&amp;gt; dernière publication en date
+- Episode n-1 =&amp;gt; avant-dernière publication en date
+- Episode n-2 =&amp;gt; avant-avant-dernière publication en date
+
+
+Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&apos;on puisse être au courant à un moment. Voici un rappel de la méthode d&apos;obtention des stats de téléchargements normalement puis avec podCloud:
+![stats](http://i.imgur.com/sqbd6mu.jpg)
+
+Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&apos;y a pas de solution fiable... 
+Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&apos;intérêt et l&apos;objectif semblait déjà atteint avant. Là, il est juste amélioré.
+
+P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
+            <itunes:description>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros </itunes:description>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:duration>1:33:04</itunes:duration>
+            <itunes:author>podCloud</itunes:author>
+        </item>
+    </channel>
+</rss>"
+`;
+
+exports[`RSS Builder should produce a valid RSS feed with a feed graphql returned object no author feed 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+    <channel>
+        <title><![CDATA[podCloud Blog]]></title>
+        <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></description>
+        <link>http://blog.podcloud.fr/</link>
+        <image>
+            <url>http://blog.podcloud.fr/cover.jpg</url>
+            <title>podCloud Blog</title>
+            <link>http://blog.podcloud.fr/</link>
+        </image>
+        <generator>podcloud-rss 1.0.0</generator>
+        <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
+        <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
+        <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
+        <copyright><![CDATA[podCloud]]></copyright>
+        <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr]]></webMaster>
+        <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
+        <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
+        <itunes:author>Anonyme</itunes:author>
+        <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:owner>
+            <itunes:email>team@podcloud.fr</itunes:email>
+        </itunes:owner>
+        <itunes:block>yes</itunes:block>
+        <itunes:category text=\\"Comedy\\"/>
+        <item>
+            <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
+            <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
+<p>Désormais, vous pouvez en avoir un aperçu à cette adresse : <a href=\\"http://assets.podcloud.fr/stats/\\">http://assets.podcloud.fr/stats/</a></p>
+]]></description>
+            <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
+            <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Nouvelle formule de popularité]]></title>
+            <description><![CDATA[<p>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.</p>
+<p>Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :</p>
+<p><img src=\\"http://i.imgur.com/QfVpqB0.png\\" alt=\\"ancienne formule\\"></p>
+<p>On voit bien qu&#39;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. </p>
+<p>Désormais on calcule tel que suit, afin d&#39;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :</p>
+<ul>
+<li>ceux qui viennent de publier un épisode (comme anciennement)</li>
+<li>les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)</li>
+<li>ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)</li>
+<li>ceux qui sont en progression d&#39;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)</li>
+</ul>
+<p>Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :</p>
+<p><img src=\\"http://i.imgur.com/6P3VqSm.png\\" alt=\\"nouvelle formule\\"></p>
+<p>Note : </p>
+<ul>
+<li>δ =&gt; temps depuis [...]</li>
+<li>Σ  =&gt; somme de [...]/nombre de [...]</li>
+<li>Episode 1 =&gt; Première publication du flux</li>
+<li>Episode n =&gt; dernière publication en date</li>
+<li>Episode n-1 =&gt; avant-dernière publication en date</li>
+<li>Episode n-2 =&gt; avant-avant-dernière publication en date</li>
+</ul>
+<p>Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&#39;on puisse être au courant à un moment. Voici un rappel de la méthode d&#39;obtention des stats de téléchargements normalement puis avec podCloud:<br><img src=\\"http://i.imgur.com/sqbd6mu.jpg\\" alt=\\"stats\\"></p>
+<p>Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&#39;y a pas de solution fiable...<br>Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&#39;intérêt et l&#39;objectif semblait déjà atteint avant. Là, il est juste amélioré.</p>
+<p>P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&#39;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</p>
+]]></description>
+            <link>http://blog.podcloud.fr/nouvelle-formule-de-popularite</link>
+            <guid isPermaLink=\\"false\\">588bbc6e6e73343ad64c0100</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Fri, 27 Jan 2017 21:32:00 GMT</pubDate>
+            <enclosure url=\\"http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f\\" length=\\"134141511\\" type=\\"audio/mpeg\\"/>
+            <itunes:image href=\\"undefined\\"/>
+            <itunes:summary>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :
+
+![ancienne formule](http://i.imgur.com/QfVpqB0.png)
+
+On voit bien qu&apos;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. 
+
+Désormais on calcule tel que suit, afin d&apos;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :
+
+- ceux qui viennent de publier un épisode (comme anciennement)
+- les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)
+- ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)
+- ceux qui sont en progression d&apos;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)
+
+Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :
+
+![nouvelle formule](http://i.imgur.com/6P3VqSm.png)
+
+Note : 
+
+- δ =&amp;gt; temps depuis [...]
+- Σ  =&amp;gt; somme de [...]/nombre de [...]
+- Episode 1 =&amp;gt; Première publication du flux
+- Episode n =&amp;gt; dernière publication en date
+- Episode n-1 =&amp;gt; avant-dernière publication en date
+- Episode n-2 =&amp;gt; avant-avant-dernière publication en date
+
+
+Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&apos;on puisse être au courant à un moment. Voici un rappel de la méthode d&apos;obtention des stats de téléchargements normalement puis avec podCloud:
+![stats](http://i.imgur.com/sqbd6mu.jpg)
+
+Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&apos;y a pas de solution fiable... 
+Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&apos;intérêt et l&apos;objectif semblait déjà atteint avant. Là, il est juste amélioré.
+
+P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
+            <itunes:description>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros </itunes:description>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:duration>1:33:04</itunes:duration>
+            <itunes:author>podCloud</itunes:author>
+        </item>
+    </channel>
+</rss>"
+`;
+
+exports[`RSS Builder should produce a valid RSS feed with a feed graphql returned object standard feed 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+    <channel>
+        <title><![CDATA[podCloud Blog]]></title>
+        <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></description>
+        <link>http://blog.podcloud.fr/</link>
+        <image>
+            <url>http://blog.podcloud.fr/cover.jpg</url>
+            <title>podCloud Blog</title>
+            <link>http://blog.podcloud.fr/</link>
+        </image>
+        <generator>podcloud-rss 1.0.0</generator>
+        <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
+        <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
+        <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
+        <copyright><![CDATA[podCloud]]></copyright>
+        <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
+        <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
+N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
+        <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
+        <itunes:author>podCloud</itunes:author>
+        <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:owner>
+            <itunes:name>podCloud</itunes:name>
+            <itunes:email>team@podcloud.fr</itunes:email>
+        </itunes:owner>
+        <itunes:block>yes</itunes:block>
+        <itunes:category text=\\"Comedy\\"/>
+        <item>
+            <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
+            <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
+<p>Désormais, vous pouvez en avoir un aperçu à cette adresse : <a href=\\"http://assets.podcloud.fr/stats/\\">http://assets.podcloud.fr/stats/</a></p>
+]]></description>
+            <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
+            <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Nouvelle formule de popularité]]></title>
+            <description><![CDATA[<p>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.</p>
+<p>Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :</p>
+<p><img src=\\"http://i.imgur.com/QfVpqB0.png\\" alt=\\"ancienne formule\\"></p>
+<p>On voit bien qu&#39;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. </p>
+<p>Désormais on calcule tel que suit, afin d&#39;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :</p>
+<ul>
+<li>ceux qui viennent de publier un épisode (comme anciennement)</li>
+<li>les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)</li>
+<li>ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)</li>
+<li>ceux qui sont en progression d&#39;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)</li>
+</ul>
+<p>Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :</p>
+<p><img src=\\"http://i.imgur.com/6P3VqSm.png\\" alt=\\"nouvelle formule\\"></p>
+<p>Note : </p>
+<ul>
+<li>δ =&gt; temps depuis [...]</li>
+<li>Σ  =&gt; somme de [...]/nombre de [...]</li>
+<li>Episode 1 =&gt; Première publication du flux</li>
+<li>Episode n =&gt; dernière publication en date</li>
+<li>Episode n-1 =&gt; avant-dernière publication en date</li>
+<li>Episode n-2 =&gt; avant-avant-dernière publication en date</li>
+</ul>
+<p>Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&#39;on puisse être au courant à un moment. Voici un rappel de la méthode d&#39;obtention des stats de téléchargements normalement puis avec podCloud:<br><img src=\\"http://i.imgur.com/sqbd6mu.jpg\\" alt=\\"stats\\"></p>
+<p>Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&#39;y a pas de solution fiable...<br>Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&#39;intérêt et l&#39;objectif semblait déjà atteint avant. Là, il est juste amélioré.</p>
+<p>P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&#39;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</p>
+]]></description>
+            <link>http://blog.podcloud.fr/nouvelle-formule-de-popularite</link>
+            <guid isPermaLink=\\"false\\">588bbc6e6e73343ad64c0100</guid>
+            <dc:creator><![CDATA[podCloud]]></dc:creator>
+            <pubDate>Fri, 27 Jan 2017 21:32:00 GMT</pubDate>
+            <enclosure url=\\"http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f\\" length=\\"134141511\\" type=\\"audio/mpeg\\"/>
+            <itunes:image href=\\"undefined\\"/>
+            <itunes:summary>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros score au plus petit :
+
+![ancienne formule](http://i.imgur.com/QfVpqB0.png)
+
+On voit bien qu&apos;ici, en ne prenant en compte que les téléchargements des 32 derniers jours du flux, un podcast qui publie souvent, quotidiennement par exemple sera TRES avantagé... Surtout que par définition, son nombre de jours depuis le dernier épisode sera régulièrement faible. 
+
+Désormais on calcule tel que suit, afin d&apos;être juste avec tout le monde, quelque soit son rythme de publication tout en gardant un rafraîchissement régulier et avec un petit boost pour :
+
+- ceux qui viennent de publier un épisode (comme anciennement)
+- les nouveaux arrivant dans le joyeux monde du podcast (nombre de jours depuis le 1er épisode)
+- ceux qui sont réguliers (si le dernier épisode a été publié en retard, ce sera pénalisant)
+- ceux qui sont en progression d&apos;audience (si cette semaine, il y a + de téléchargements que la moyenne mensuelle)
+
+Voici donc la formule un peu simplifiée mais qui vous montre bien le principe :
+
+![nouvelle formule](http://i.imgur.com/6P3VqSm.png)
+
+Note : 
+
+- δ =&amp;gt; temps depuis [...]
+- Σ  =&amp;gt; somme de [...]/nombre de [...]
+- Episode 1 =&amp;gt; Première publication du flux
+- Episode n =&amp;gt; dernière publication en date
+- Episode n-1 =&amp;gt; avant-dernière publication en date
+- Episode n-2 =&amp;gt; avant-avant-dernière publication en date
+
+
+Il reste toujours le &quot;problème&quot; inhérent à tout système de statistiques: il faut que l&apos;on puisse être au courant à un moment. Voici un rappel de la méthode d&apos;obtention des stats de téléchargements normalement puis avec podCloud:
+![stats](http://i.imgur.com/sqbd6mu.jpg)
+
+Si les téléchargements sont fait en dehors de podCloud, cela ne contribuera pas à ce calcul. Donc oui, les podcasts &quot;internes&quot; sont avantagés. Mais il n&apos;y a pas de solution fiable... 
+Mais après tout peut importe, le but est simplement de faire découvrir des podcasts dignes d&apos;intérêt et l&apos;objectif semblait déjà atteint avant. Là, il est juste amélioré.
+
+P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
+            <itunes:description>Après plusieurs années de bons et loyaux services, la formule simple mais relativement correcte tire sa révérence pour une nouvelle bien plus efficace et plus juste.
+
+Originellement on calculait une popularité telle que suit et on classait du plus gros </itunes:description>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:duration>1:33:04</itunes:duration>
+            <itunes:author>podCloud</itunes:author>
+        </item>
+    </channel>
+</rss>"
+`;

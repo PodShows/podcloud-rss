@@ -2,21 +2,6 @@
 
 import * as Utils from "./utils"
 
-// export const notEmpty = function(obj) {
-//   return typeof obj === "string" && obj.length > 0
-// }
-
-// export const empty = function(obj) {
-//   return !notEmpty(obj)
-// }
-
-// export const getFeedIdentifierFromRequest = function(request) {
-//   let identifier = request.query.identifier
-//   if (empty(identifier)) {
-//     identifier = request.get("host").replace(/\.(podcloud|lepodcast)\.fr$/, "")
-//   }
-// }
-
 describe("Utils", () => {
   describe("notEmpty", () => {
     test("should return true if string not empty", () => {
