@@ -32,7 +32,11 @@ export default class podCloudFeedsAPI {
     })
   }
 
-  getFeedWithIdentifier(identifier, client = this.defaultClient) {
+  getFeedWithIdentifier(
+    identifier,
+    /* istanbul ignore next */
+    client = this.defaultClient
+  ) {
     return client
       .query({
         query: gql`

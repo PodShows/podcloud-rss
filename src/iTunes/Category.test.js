@@ -14,17 +14,17 @@ describe("buildiTunesCategory", () => {
   })
 
   test("produce a result for a nested category", () => {
-    expect(buildiTunesCategory("software_how_to")).toEqual({
+    expect(buildiTunesCategory("shopping")).toEqual({
       "itunes:category": [
         {
           _attr: {
-            text: "Technology"
+            text: "Business"
           }
         },
         {
           "itunes:category": {
             _attr: {
-              text: "Software How-To"
+              text: "Shopping"
             }
           }
         }

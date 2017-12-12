@@ -27,6 +27,17 @@ describe("FeedsAPI", () => {
     ).resolves.toEqual({ content: "content" })
   })
 
+  test("to reject promise when data is incoherent", () => {
+    const fakeData = { nodata: "incoherent" }
+    const mockedPromise = new Promise(function(resolve, reject) {
+      resolve(fakeData)
+    })
+    const mockedClient = { query: jest.fn().mockReturnValue(mockedPromise) }
+    expect(
+      feedsAPI.getFeedWithIdentifier("toto", mockedClient)
+    ).rejects.toEqual(fakeData)
+  })
+
   test("to reject promise correctly", () => {
     const mockedPromise = new Promise(function(resolve, reject) {
       reject("error msg")
