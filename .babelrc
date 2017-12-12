@@ -1,9 +1,24 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
       }
-    }]
+    ]
+  ],
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      [
+        {
+          "rootPathPrefix": "~",
+          "rootPathSuffix": "src"
+        }
+      ]
+    ],
+    "transform-object-rest-spread"
   ]
 }

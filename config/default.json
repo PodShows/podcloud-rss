@@ -1,0 +1,8 @@
+{
+  "listen": 8880,
+  "hosts": {
+    "podcasts": "lepodcast.test",
+    "platform": "podcloud.test",
+    "feeds": "feeds.podcloud.test"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "eslint.enable": true,
+  "prettier.trailingComma": false,
+  "editor.formatOnSave": true
+}
