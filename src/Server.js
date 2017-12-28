@@ -17,28 +17,30 @@ const send404 = function(content = "Not found") {
   sendResponse(404, content)
 }
 
-const requestHandler = function(req, res) {
-  const identifier = getFeedIdentifierFromRequest(req)
+const requestHandler = function(feedsAPI) {
+  return function(req, res) {
+    const identifier = getFeedIdentifierFromRequest(req)
 
-  if (notEmpty(identifier)) {
-    feedsAPI
-      .getFeedWithIdentifier(identifier)
-      .then(apiResponse => {
-        const rss = RSSBuilder(apiResponse)
+    if (notEmpty(identifier)) {
+      feedsAPI
+        .getFeedWithIdentifier(identifier)
+        .then(apiResponse => {
+          const rss = RSSBuilder(apiResponse)
 
-        if (rss == null) {
-          send404()
-        } else {
-          res.status(200)
-          res.send(rss.xml({ indent: true }))
-        }
-      })
-      .catch(error => {
-        console.error(error)
-        send500(error)
-      })
-  } else {
-    send404()
+          if (rss == null) {
+            send404()
+          } else {
+            res.status(200)
+            res.send(rss.xml({ indent: true }))
+          }
+        })
+        .catch(error => {
+          console.error(error)
+          send500(error)
+        })
+    } else {
+      send404()
+    }
   }
 }
 
@@ -50,10 +52,9 @@ class Server {
     this.apiEndpoint = apiEndpoint
     this.app = express()
     this.app.use(compression())
-
-    this.app.get("*", requestHandler)
-
     this[feedsAPI] = new FeedsAPI(apiEndpoint)
+
+    this.app.get("*", requestHandler(this[feedsAPI]))
   }
 
   start() {
