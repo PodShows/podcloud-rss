@@ -1,4 +1,4 @@
-upstream podcloud-feeds.production {
+upstream podcloud-rss.production {
   server unix:/tmp/podcloud.rss.production.sock fail_timeout=0;
   keepalive 32;
 }
