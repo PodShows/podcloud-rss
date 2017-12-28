@@ -35,7 +35,7 @@ export default class podCloudFeedsAPI {
   getFeedWithIdentifier(
     identifier,
     /* istanbul ignore next */
-    client = this.defaultClient
+    client = defaultClient
   ) {
     return client
       .query({
