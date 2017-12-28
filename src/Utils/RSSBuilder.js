@@ -16,7 +16,7 @@ export default function RSSBuilder(podcast) {
     language: podcast.language,
     copyright: podcast.copyright,
     pubDate: podcast.updated_at,
-    generator: "podcloud-rss 1.0.2",
+    generator: "podcloud-rss 1.0.3",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
     },
