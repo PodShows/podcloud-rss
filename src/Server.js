@@ -4,21 +4,21 @@ import compression from "compression"
 import FeedsAPI from "~/podCloud/FeedsAPI"
 import { notEmpty, getFeedIdentifierFromRequest, RSSBuilder } from "~/Utils"
 
-const sendResponse = function(status = 200, content = "ok") {
+const sendResponse = function (status = 200, content = "ok") {
   res.status(status)
   res.send(content)
 }
 
-const send500 = function(content = "An error occured") {
+const send500 = function (content = "An error occured") {
   sendResponse(500, content)
 }
 
-const send404 = function(content = "Not found") {
+const send404 = function (content = "Not found") {
   sendResponse(404, content)
 }
 
-const requestHandler = function(feedsAPI) {
-  return function(req, res) {
+const requestHandler = function (feedsAPI) {
+  return function (req, res) {
     const identifier = getFeedIdentifierFromRequest(req)
 
     if (notEmpty(identifier)) {
@@ -31,6 +31,7 @@ const requestHandler = function(feedsAPI) {
             send404()
           } else {
             res.status(200)
+            res.header("Content-Type", "application/rss+xml; charset=utf-8");
             res.send(rss.xml({ indent: true }))
           }
         })
