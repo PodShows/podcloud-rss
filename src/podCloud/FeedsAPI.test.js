@@ -6,7 +6,7 @@ describe("FeedsAPI", () => {
   test("refuse to construct an object without a valid API endpoint", () => {
     expect(() => {
       new FeedsAPI("")
-    }).toThrowError("A remote endpoint is required for a network layer")
+    }).toThrowError("An endpoint url is required")
   })
 
   test("construct an object with an API endpoint", () => {
@@ -15,13 +15,16 @@ describe("FeedsAPI", () => {
 
   const feedsAPI = new FeedsAPI("http://feeds.podcloud.fr/")
 
+  const mockClient = promiseFunc => ({
+    query: jest.fn().mockReturnValue(new Promise(promiseFunc))
+  })
+
   test("to resolve promise correctly", () => {
-    const mockedPromise = new Promise(function(resolve) {
+    const mockedClient = mockClient(resolve =>
       resolve({
         data: { podcastForFeedWithIdentifier: { content: "content" } }
       })
-    })
-    const mockedClient = { query: jest.fn().mockReturnValue(mockedPromise) }
+    )
     expect(
       feedsAPI.getFeedWithIdentifier("toto", mockedClient)
     ).resolves.toEqual({ content: "content" })
@@ -29,20 +32,14 @@ describe("FeedsAPI", () => {
 
   test("to reject promise when data is incoherent", () => {
     const fakeData = { nodata: "incoherent" }
-    const mockedPromise = new Promise(function(resolve, reject) {
-      resolve(fakeData)
-    })
-    const mockedClient = { query: jest.fn().mockReturnValue(mockedPromise) }
+    const mockedClient = mockClient(resolve => resolve(fakeData))
     expect(
       feedsAPI.getFeedWithIdentifier("toto", mockedClient)
     ).rejects.toEqual(fakeData)
   })
 
   test("to reject promise correctly", () => {
-    const mockedPromise = new Promise(function(resolve, reject) {
-      reject("error msg")
-    })
-    const mockedClient = { query: jest.fn().mockReturnValue(mockedPromise) }
+    const mockedClient = mockClient((resolve, reject) => reject("error msg"))
     expect(
       feedsAPI.getFeedWithIdentifier("toto", mockedClient)
     ).rejects.toEqual("error msg")

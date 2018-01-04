@@ -2,34 +2,26 @@
 import "isomorphic-fetch"
 
 import gql from "graphql-tag"
-import ApolloClient, {
-  createNetworkInterface,
-  IntrospectionFragmentMatcher
-} from "apollo-client"
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData: {
-    __schema: {
-      types: [
-        {
-          kind: "INTERFACE",
-          name: "PodcastItem",
-          possibleTypes: [{ name: "Episode" }, { name: "Post" }]
-        }
-      ]
-    }
+import { execute, makePromise } from "apollo-link"
+import { HttpLink } from "apollo-link-http"
+
+class GraphQLSimpleHttpClient {
+  constructor(uri) {
+    this.link = new HttpLink({ uri })
   }
-})
+
+  query(operation) {
+    /* istanbul ignore next */
+    return makePromise(execute(this.link, operation))
+  }
+}
 
 let defaultClient
 export default class podCloudFeedsAPI {
   constructor(endpoint_url) {
-    defaultClient = new ApolloClient({
-      networkInterface: createNetworkInterface({
-        uri: endpoint_url
-      }),
-      fragmentMatcher
-    })
+    if (!endpoint_url) throw "An endpoint url is required"
+    defaultClient = new GraphQLSimpleHttpClient(endpoint_url)
   }
 
   getFeedWithIdentifier(
