@@ -1,5 +1,9 @@
 {
   "listen": 8880,
+  "stats": {
+    "bin": "~/podcloud/stats/bin/stats",
+    "private_key": "~/podcloud/keys/rss.key"
+  },
   "hosts": {
     "podcasts": "lepodcast.test",
     "platform": "podcloud.test",
