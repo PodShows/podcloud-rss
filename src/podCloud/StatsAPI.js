@@ -61,7 +61,9 @@ export class podCloudStatsAPI {
         algorithm: "RS256"
       })
 
-      const proc = spawn(this.bin, ["register", "podcast", signed_payload], {})
+      const proc = spawn(this.bin, ["register", "podcast", signed_payload], {
+        env: { NODE_ENV: process.env.NODE_ENV }
+      })
 
       const logprefix = `[stats-${proc.pid}]`
 
