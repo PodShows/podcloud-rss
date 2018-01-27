@@ -57,10 +57,11 @@ export class podCloudStatsAPI {
 
       const signed_payload = jwt.sign(payload, this.privateKey, {
         issuer: "rss",
-        subject: "stats"
+        subject: "stats",
+        algorithm: "RS256"
       })
 
-      const proc = spawn(this.bin, ["podcast", signed_payload], {})
+      const proc = spawn(this.bin, ["register", "podcast", signed_payload], {})
 
       const logprefix = `[stats-${proc.pid}]`
 
