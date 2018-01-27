@@ -11,5 +11,12 @@ function constructFeedsAPIUrl() {
   )
 }
 
-const server = new Server(config.get("listen"), constructFeedsAPIUrl())
+const stats = config.get("stats")
+
+const server = new Server(
+  config.get("listen"),
+  constructFeedsAPIUrl(),
+  stats.private_key,
+  stats.bin
+)
 server.start()

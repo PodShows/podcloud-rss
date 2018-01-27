@@ -1,5 +1,9 @@
 {
   "listen": "/tmp/podcloud.rss.preprod.sock",
+  "stats": {
+    "bin": "/home/podcloud/preprod/stats/current/bin/stats",
+    "private_key": "/home/podcloud/preprod/rss/shared/keys/rss.key"
+  },
   "hosts": {
     "podcasts": "pp.lepodcast.fr",
     "platform": "pp.podcloud.fr",

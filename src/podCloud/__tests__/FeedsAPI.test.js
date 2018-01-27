@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import FeedsAPI from "./FeedsAPI"
+import FeedsAPI from "../FeedsAPI"
 
 describe("FeedsAPI", () => {
   test("refuse to construct an object without a valid API endpoint", () => {

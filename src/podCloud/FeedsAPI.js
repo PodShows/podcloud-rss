@@ -34,6 +34,7 @@ export default class podCloudFeedsAPI {
         query: gql`
           query getFeed($identifier: String!) {
             podcastForFeedWithIdentifier(identifier: $identifier) {
+              _id
               title
               description
               catchline
