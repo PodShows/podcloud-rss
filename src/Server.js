@@ -36,7 +36,7 @@ const requestHandler = function(feedsAPI, statsAPI) {
             res.send(rss.xml({ indent: true }))
             console.log("Saving view.")
             statsAPI
-              .saveView(podcast, request)
+              .saveView(podcast, req)
               .then(
                 () => console.log(`View saved for ${podcast.identifier}`),
                 () =>
