@@ -3,22 +3,64 @@ import * as jwt from "jsonwebtoken"
 import process from "process"
 import { spawn } from "child_process"
 
-class podCloudStatsAPI {
-  constructor(privateKey, bin) {
-    this.privateKey = privateKey
+import { empty } from "../Utils"
+
+import fs from "fs"
+
+export class podCloudStatsAPI {
+  constructor(privateKeyPath, bin) {
+    this.privateKey = null
+    this.privateKeyPath = privateKeyPath
     this.bin = bin
   }
 
-  saveView(feed_guid, request) {
-    return new Promise((resolve, reject) => {
-      const pkey = fs.readFileSync(this.privateKey)
+  saveView(podcast, request) {
+    if (typeof podcast !== "object" || podcast === null || podcast === {})
+      return null
 
-      const signed_payload = jwt.sign(payload, pkey, {
-        issuer: "feeds",
+    return new Promise((resolve, reject) => {
+      if (this.privateKey === null) {
+        this.privateKey = fs.readFileSync(this.privateKeyPath)
+      }
+
+      if (typeof request !== "object") request = false
+
+      const clean = str => (empty(str) ? null : str)
+
+      const getIP = req => {
+        try {
+          return clean(
+            (request
+              ? request.headers["x-forwarded-for"] ||
+                request.connection.remoteAddress ||
+                request.socket.remoteAddress ||
+                request.connection.socket.remoteAddress
+              : ""
+            ).split(",")[0]
+          )
+        } catch (e) {
+          console.error(e)
+        }
+        return clean("")
+      }
+
+      const getHeader = (req, header) => {
+        return req && req.headers && req.header[header]
+      }
+
+      const payload = {
+        fid: clean(podcast._id),
+        ip: getIP(request),
+        ua: getHeader(request, "user-agent"),
+        ref: getHeader(request, "referer")
+      }
+
+      const signed_payload = jwt.sign(payload, this.privateKey, {
+        issuer: "rss",
         subject: "stats"
       })
 
-      const proc = spawn(this.bin, [signed_payload], {})
+      const proc = spawn(this.bin, ["podcast", signed_payload], {})
 
       const logprefix = `[stats-${proc.pid}]`
 
@@ -43,3 +85,5 @@ class podCloudStatsAPI {
     })
   }
 }
+
+export default podCloudStatsAPI
