@@ -34,13 +34,15 @@ const requestHandler = function(feedsAPI, statsAPI) {
             res.status(200)
             res.header("Content-Type", "application/rss+xml; charset=utf-8")
             res.send(rss.xml({ indent: true }))
-            console.log("Saving view.")
+            console.log(`Saving view for ${podcast.identifier}...`)
             statsAPI
               .saveView(podcast, req)
               .then(
-                () => console.log(`View saved for ${podcast.identifier}`),
+                () => console.log(`View saved for ${podcast.identifier}.`),
                 () =>
-                  console.error(`Failed to save view for ${podcast.identifier}`)
+                  console.error(
+                    `Failed to save view for ${podcast.identifier}!`
+                  )
               )
           }
         })
