@@ -45,7 +45,7 @@ export class podCloudStatsAPI {
       }
 
       const getHeader = (req, header) => {
-        return req && req.headers && req.header[header]
+        return req && req.headers && req.headers[header]
       }
 
       const payload = {
