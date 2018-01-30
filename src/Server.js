@@ -66,7 +66,7 @@ class Server {
     this.app = express()
     this.app.use(compression())
     this[feedsAPI] = new FeedsAPI(apiEndpoint)
-    this[statsAPI] = new StatsAPI(statsPrivateKey, statsBin)
+    this[statsAPI] = new StatsAPI()
 
     this.app.get("*", requestHandler(this[feedsAPI], this[statsAPI]))
   }
