@@ -1,28 +1,15 @@
-import * as jwt from "jsonwebtoken"
-
-import process from "process"
-import { spawn } from "child_process"
-
 import { empty } from "../Utils"
 
-import fs from "fs"
+import { PodcastViewAppeal } from "podcloud-stats"
 
 export class podCloudStatsAPI {
-  constructor(privateKeyPath, bin) {
-    this.privateKey = null
-    this.privateKeyPath = privateKeyPath
-    this.bin = bin
-  }
+  constructor() {}
 
   saveView(podcast, request) {
     if (typeof podcast !== "object" || podcast === null || podcast === {})
       return null
 
     return new Promise((resolve, reject) => {
-      if (this.privateKey === null) {
-        this.privateKey = fs.readFileSync(this.privateKeyPath)
-      }
-
       if (typeof request !== "object") request = false
 
       const clean = str => (empty(str) ? null : str)
@@ -55,36 +42,7 @@ export class podCloudStatsAPI {
         ref: getHeader(request, "referer")
       }
 
-      const signed_payload = jwt.sign(payload, this.privateKey, {
-        issuer: "rss",
-        subject: "stats",
-        algorithm: "RS256"
-      })
-
-      const proc = spawn(this.bin, ["register", "podcast", signed_payload], {
-        env: { NODE_ENV: process.env.NODE_ENV }
-      })
-
-      const logprefix = `[stats-${proc.pid}]`
-
-      proc.stdout.on("data", data => {
-        console.log(`${logprefix} ${data}`)
-      })
-
-      proc.stderr.on("data", data => {
-        console.error(`${logprefix} ${data}`)
-      })
-
-      proc.on("close", code => {
-        const msg = `${logprefix} process exited with code ${code}`
-        if (code === 0) {
-          console.log(msg)
-          resolve()
-        } else {
-          console.error(msg)
-          reject()
-        }
-      })
+      PodcastViewAppeal.process(payload).then(resolve, reject)
     })
   }
 }

@@ -1,22 +1,16 @@
 import Server from "~/Server"
 import config from "config"
+import { Mongo } from "podcloud-stats"
 
-function constructFeedsAPIUrl() {
-  const host = config.get("hosts") && config.get("hosts").feeds
+const feeds_host = config.get("hosts") && config.get("hosts").feeds
 
-  return (
-    (host &&
-      (host.match(/^https?:\/\//) ? host : "http://" + host) + "/graphql") ||
-    null
-  )
-}
+const feedsAPIURL =
+  (feeds_host &&
+    (feeds_host.match(/^https?:\/\//) ? feeds_host : "http://" + feeds_host) +
+      "/graphql") ||
+  null
 
-const stats = config.get("stats")
-
-const server = new Server(
-  config.get("listen"),
-  constructFeedsAPIUrl(),
-  stats.private_key,
-  stats.bin
-)
-server.start()
+Mongo.connect(config.get("mongodb")).then(() => {
+  const server = new Server(config.get("listen"), feedsAPIURL)
+  server.start()
+}, console.error)
