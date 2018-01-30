@@ -1,5 +1,6 @@
 import Server from "~/Server"
 import config from "config"
+import { Mongo } from "podcloud-stats"
 
 const feeds_host = config.get("hosts") && config.get("hosts").feeds
 
