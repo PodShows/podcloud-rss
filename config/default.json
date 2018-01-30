@@ -1,9 +1,6 @@
 {
   "listen": 8880,
-  "stats": {
-    "bin": "~/podcloud/stats/bin/stats",
-    "private_key": "~/podcloud/keys/rss.key"
-  },
+  "mongodb": "mongodb://localhost/podcloud_development",
   "hosts": {
     "podcasts": "lepodcast.test",
     "platform": "podcloud.test",
