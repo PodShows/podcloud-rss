@@ -105,7 +105,6 @@ export default function RSSBuilder(podcast) {
             }
           },
           { "itunes:summary": item.text_content.substring(0, 3999) },
-          { "itunes:description": item.text_content.substring(0, 255) },
           { "itunes:explicit": podcast.explicit ? "yes" : "no" },
           { "itunes:duration": chronic_duration }
         ]
