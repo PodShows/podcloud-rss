@@ -1,9 +1,11 @@
+import url from "url"
+
 import express from "express"
 import compression from "compression"
 
 import FeedsAPI from "~/podCloud/FeedsAPI"
 import StatsAPI from "~/podCloud/StatsAPI"
-import { notEmpty, getFeedIdentifierFromRequest, RSSBuilder } from "~/Utils"
+import { isObject, notEmpty, getFeedIdentifierFromRequest, RSSBuilder } from "~/Utils"
 
 const sendResponse = function(res, status = 200, content = "ok") {
   res.status(status)
@@ -26,24 +28,36 @@ const requestHandler = function(feedsAPI, statsAPI) {
       feedsAPI
         .getFeedWithIdentifier(identifier)
         .then(podcast => {
-          const rss = RSSBuilder(podcast)
-
-          if (rss == null) {
-            send404(res)
+          if (isObject(podcast) && podcast.disabled === true) {
+            try {
+              const redirect_url = url.parse(podcast.feed_redirect_url);
+              res.writeHead(301, {
+                'Location': redirect_url.href
+              });
+              res.end();
+            } catch(e) {
+              send404(res)
+            }
           } else {
-            res.status(200)
-            res.header("Content-Type", "application/rss+xml; charset=utf-8")
-            res.send(rss.xml({ indent: true }))
-            console.log(`Saving view for ${podcast.identifier}...`)
-            statsAPI
-              .saveView(podcast, req)
-              .then(
-                () => console.log(`View saved for ${podcast.identifier}.`),
-                () =>
+            const rss = RSSBuilder(podcast)
+
+            if (rss == null) {
+              send404(res)
+            } else {
+              res.status(200)
+              res.header("Content-Type", "application/rss+xml; charset=utf-8")
+              res.send(rss.xml({ indent: true }))
+              console.log(`Saving view for ${podcast.identifier}...`)
+              statsAPI
+                .saveView(podcast, req)
+                .then(
+                  () => console.log(`View saved for ${podcast.identifier}.`),
+                  () =>
                   console.error(
                     `Failed to save view for ${podcast.identifier}!`
                   )
-              )
+                )
+            }
           }
         })
         .catch(error => {

@@ -1,3 +1,7 @@
+export const isObject = function(obj) {
+  return !!(typeof obj === "object" && obj);
+}
+
 export const notEmpty = function(obj) {
   return typeof obj === "string" && obj.trim().length > 0
 }

@@ -3,6 +3,22 @@
 import * as Utils from "./utils"
 
 describe("Utils", () => {
+  describe("isObject", () => {
+    test("should return true if given object", () => {
+      expect(Utils.isObject({})).toBe(true)
+    })
+
+    test("should return false if object is null", () => {
+      expect(Utils.isObject(null)).toBe(false)
+    })
+
+    test("should return false if not an object", () => {
+      expect(Utils.isObject("")).toBe(false)
+      expect(Utils.isObject(5)).toBe(false)
+      expect(Utils.isObject(undefined)).toBe(false)
+    })
+  })
+
   describe("notEmpty", () => {
     test("should return true if string not empty", () => {
       expect(Utils.notEmpty("toto")).toBe(true)
