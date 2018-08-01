@@ -28,24 +28,24 @@ const requestHandler = function(feedsAPI, statsAPI) {
       feedsAPI
         .getFeedWithIdentifier(identifier)
         .then(podcast => {
-          if (isObject(podcast) && podcast.disabled === true) {
-            try {
-              const redirect_url = url.parse(podcast.feed_redirect_url);
-              res.writeHead(301, {
-                'Location': redirect_url.href
-              });
-              res.end();
-            } catch(e) {
-              send404(res)
-            }
-          } else {
-            const rss = RSSBuilder(podcast)
+          const rss = RSSBuilder(podcast)
 
-            if (rss == null) {
-              send404(res)
+          if (rss == null) {
+            send404(res)
+          } else {
+            res.status(200)
+            res.header("Content-Type", "application/rss+xml; charset=utf-8")
+            if(podcast.disabled === true) {
+              try {
+                const redirect_url = url.parse(podcast.feed_redirect_url);
+                res.status(301)
+                res.header("Location", redirect_url.href);
+                res.send(rss.xml({ indent: true }));
+                res.end();
+              } catch(e) {
+                send404(res)
+              }
             } else {
-              res.status(200)
-              res.header("Content-Type", "application/rss+xml; charset=utf-8")
               res.send(rss.xml({ indent: true }))
               console.log(`Saving view for ${podcast.identifier}...`)
               statsAPI
