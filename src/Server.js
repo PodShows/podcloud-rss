@@ -34,19 +34,24 @@ const requestHandler = function(feedsAPI, statsAPI) {
             send404(res)
           } else {
             res.status(200)
-            res.header("Content-Type", "application/rss+xml; charset=utf-8")
+            res.header("Content-Type", "text/xml; charset=utf-8")
+            const result_rss = () => 
+              rss.xml({ indent: true }).replace(
+                /(<\?xml.*\?>)/, 
+                '$1\n<?xml-stylesheet type="text/xsl" href="http://localhost:8880/app/hello.xsl"?>\n'
+              );
             if(podcast.disabled === true) {
               try {
                 const redirect_url = url.parse(podcast.feed_redirect_url);
                 res.status(301)
                 res.header("Location", redirect_url.href);
-                res.send(rss.xml({ indent: true }));
+                res.send(result_rss());
                 res.end();
               } catch(e) {
                 send404(res)
               }
             } else {
-              res.send(rss.xml({ indent: true }))
+              res.send(result_rss())
               console.log(`Saving view for ${podcast.identifier}...`)
               statsAPI
                 .saveView(podcast, req)
@@ -82,6 +87,7 @@ class Server {
     this[feedsAPI] = new FeedsAPI(apiEndpoint)
     this[statsAPI] = new StatsAPI()
 
+    this.app.use("/app", express.static(__dirname+'/../app'));
     this.app.get("*", requestHandler(this[feedsAPI], this[statsAPI]))
   }
 
