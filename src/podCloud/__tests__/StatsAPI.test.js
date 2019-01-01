@@ -9,7 +9,7 @@ process.exit((+process.argv[2]+1 || 0)-1);
 describe("statsAPI", () => {
   describe("saveView", () => {
     it("should return null when called with a non object podcast argument", () => {
-      const sAPI = new podCloudStatsAPI(null, null)
+      const sAPI = new podCloudStatsAPI("stats_url")
       expect(sAPI.saveView(null, null)).toBe(null)
     })
   })

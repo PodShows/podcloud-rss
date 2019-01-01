@@ -4,6 +4,7 @@
   "hosts": {
     "podcasts": "lepodcast.test",
     "platform": "podcloud.test",
-    "feeds": "feeds.podcloud.test"
+    "feeds": "feeds.podcloud.fr",
+    "stats": "stats.podcloud.test"
   }
 }

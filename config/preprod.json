@@ -4,6 +4,7 @@
   "hosts": {
     "podcasts": "pp.lepodcast.fr",
     "platform": "pp.podcloud.fr",
-    "feeds": "feeds.pp.podcloud.fr"
+    "feeds": "feeds.pp.podcloud.fr",
+    "stats": "stats.pp.podcloud.fr"
   }
 }

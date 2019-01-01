@@ -1,9 +1,16 @@
+import gql from "graphql-tag"
+import GraphQLSimpleHttpClient from "./GraphQLSimpleHttpClient"
+
 import { empty } from "../Utils"
 
 import { PodcastViewAppeal } from "podcloud-stats"
 
+let defaultClient
 export class podCloudStatsAPI {
-  constructor() {}
+  constructor(endpoint_url) {
+    if (!endpoint_url) throw "An endpoint url is required"
+    defaultClient = new GraphQLSimpleHttpClient(endpoint_url)
+  }
 
   saveView(podcast, request) {
     if (typeof podcast !== "object" || podcast === null || podcast === {})
@@ -35,14 +42,59 @@ export class podCloudStatsAPI {
         return req && req.headers && req.headers[header]
       }
 
-      const payload = {
-        fid: clean(podcast._id),
-        ip: getIP(request),
-        ua: getHeader(request, "user-agent"),
-        ref: getHeader(request, "referer")
-      }
+      const FeedID = clean(podcast._id)
+      const FeedName = clean(podcast.title)
+      const IP = getIP(request)
+      const UserAgent = getHeader(request, "user-agent")
+      const Referer = getHeader(request, "referer")
 
-      PodcastViewAppeal.process(payload).then(resolve, reject)
+      Promise.all([
+        PodcastViewAppeal.process({
+          fid: FeedID,
+          ip: IP,
+          ua: UserAgent,
+          ref: Referer
+        }),
+        this._sendViewToStats({
+          FeedID,
+          FeedName,
+          IP,
+          UserAgent,
+          Referer
+        })
+      ]).then(resolve, reject)
+    })
+  }
+
+  _sendViewToStats(
+    payload,
+    /* istanbul ignore next */
+    client = defaultClient
+  ) {
+    const query = gql`
+      mutation saveView(
+        $FeedID: String!
+        $FeedName: String!
+        $IP: String!
+        $UserAgent: String!
+        $Referer: String!
+      ) {
+        views {
+          saveView(
+            FeedID: $FeedID
+            FeedName: $FeedName
+            IP: $IP
+            UserAgent: $UserAgent
+            Referer: $Referer
+          )
+        }
+      }
+    `
+    console.log(query)
+    return client.query({
+      query,
+      variables: payload,
+      operationName: "saveView"
     })
   }
 }

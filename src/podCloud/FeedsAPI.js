@@ -1,23 +1,8 @@
-// polyfill
-import "isomorphic-fetch"
-
 import gql from "graphql-tag"
-
-import { execute, makePromise } from "apollo-link"
-import { HttpLink } from "apollo-link-http"
-
-class GraphQLSimpleHttpClient {
-  constructor(uri) {
-    this.link = new HttpLink({ uri })
-  }
-
-  query(operation) {
-    /* istanbul ignore next */
-    return makePromise(execute(this.link, operation))
-  }
-}
+import GraphQLSimpleHttpClient from "./GraphQLSimpleHttpClient"
 
 let defaultClient
+
 export default class podCloudFeedsAPI {
   constructor(endpoint_url) {
     if (!endpoint_url) throw "An endpoint url is required"
