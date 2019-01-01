@@ -45,8 +45,8 @@ export class podCloudStatsAPI {
       const FeedID = clean(podcast._id)
       const FeedName = clean(podcast.title)
       const IP = getIP(request)
-      const UserAgent = getHeader(request, "user-agent")
-      const Referer = getHeader(request, "referer")
+      const UserAgent = getHeader(request, "user-agent") || ""
+      const Referer = getHeader(request, "referer") || ""
 
       Promise.all([
         PodcastViewAppeal.process({
@@ -71,30 +71,27 @@ export class podCloudStatsAPI {
     /* istanbul ignore next */
     client = defaultClient
   ) {
-    const query = gql`
-      mutation saveView(
-        $FeedID: String!
-        $FeedName: String!
-        $IP: String!
-        $UserAgent: String!
-        $Referer: String!
-      ) {
-        views {
-          saveView(
-            FeedID: $FeedID
-            FeedName: $FeedName
-            IP: $IP
-            UserAgent: $UserAgent
-            Referer: $Referer
-          )
-        }
-      }
-    `
-    console.log(query)
     return client.query({
-      query,
-      variables: payload,
-      operationName: "saveView"
+      query: gql`
+        mutation saveView(
+          $FeedID: String!
+          $FeedName: String!
+          $IP: String!
+          $UserAgent: String!
+          $Referer: String!
+        ) {
+          views {
+            saveView(
+              FeedID: $FeedID
+              FeedName: $FeedName
+              IP: $IP
+              UserAgent: $UserAgent
+              Referer: $Referer
+            )
+          }
+        }
+      `,
+      variables: payload
     })
   }
 }
