@@ -5,7 +5,12 @@ import compression from "compression"
 
 import FeedsAPI from "~/podCloud/FeedsAPI"
 import StatsAPI from "~/podCloud/StatsAPI"
-import { isObject, notEmpty, getFeedIdentifierFromRequest, RSSBuilder } from "~/Utils"
+import {
+  isObject,
+  notEmpty,
+  getFeedIdentifierFromRequest,
+  RSSBuilder
+} from "~/Utils"
 
 const sendResponse = function(res, status = 200, content = "ok") {
   res.status(status)
@@ -35,14 +40,14 @@ const requestHandler = function(feedsAPI, statsAPI) {
           } else {
             res.status(200)
             res.header("Content-Type", "application/rss+xml; charset=utf-8")
-            if(podcast.disabled === true) {
+            if (podcast.disabled === true) {
               try {
-                const redirect_url = url.parse(podcast.feed_redirect_url);
+                const redirect_url = url.parse(podcast.feed_redirect_url)
                 res.status(301)
-                res.header("Location", redirect_url.href);
-                res.send(rss.xml({ indent: true }));
-                res.end();
-              } catch(e) {
+                res.header("Location", redirect_url.href)
+                res.send(rss.xml({ indent: true }))
+                res.end()
+              } catch (e) {
                 send404(res)
               }
             } else {
@@ -53,9 +58,9 @@ const requestHandler = function(feedsAPI, statsAPI) {
                 .then(
                   () => console.log(`View saved for ${podcast.identifier}.`),
                   () =>
-                  console.error(
-                    `Failed to save view for ${podcast.identifier}!`
-                  )
+                    console.error(
+                      `Failed to save view for ${podcast.identifier}!`
+                    )
                 )
             }
           }
@@ -86,12 +91,42 @@ class Server {
   }
 
   start() {
-    const address = isNaN(parseInt(this.listen, 10))
-      ? this.listen
-      : `http://localhost:${this.listen}/`
-    this.app.listen(this.listen, () =>
-      console.log(`RSS server is now running on ${address}`)
-    )
+    const unix_socket = isNaN(parseInt(this.listen, 10))
+
+    const listen = () => {
+      this.app.listen(this.listen, () =>
+        console.log(
+          `RSS server is now running on ${
+            unix_socket ? this.listen : `http://localhost:${this.listen}/`
+          }`
+        )
+      )
+    }
+
+    listen()
+
+    if (unix_socket) {
+      this.app.on("listening", function() {
+        // set permissions
+        return fs.chmod(this.listen, 777)
+      })
+
+      // double-check EADDRINUSE
+      this.app.on("error", function(e) {
+        if (e.code !== "EADDRINUSE") throw e
+        net
+          .connect({ path: this.listen }, function() {
+            // really in use: re-throw
+            throw e
+          })
+          .on("error", function(e) {
+            if (e.code !== "ECONNREFUSED") throw e
+            // not in use: delete it and re-listen
+            fs.unlinkSync(this.listen)
+            listen()
+          })
+      })
+    }
   }
 }
 
