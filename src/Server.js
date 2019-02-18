@@ -1,4 +1,7 @@
 import url from "url"
+import fs from "fs"
+import net from "net"
+import http from "http"
 
 import express from "express"
 import compression from "compression"
@@ -93,37 +96,35 @@ class Server {
   start() {
     const unix_socket = isNaN(parseInt(this.listen, 10))
 
-    const listen = () => {
-      this.app.listen(this.listen, () =>
-        console.log(
-          `RSS server is now running on ${
-            unix_socket ? this.listen : `http://localhost:${this.listen}/`
-          }`
-        )
-      )
-    }
+    const server = http.createServer(this.app).listen(this.listen)
 
-    listen()
+    server.on("listening", () => {
+      console.log(
+        `RSS server is now running on ${
+          unix_socket ? this.listen : `http://localhost:${this.listen}/`
+        }`
+      )
+    })
 
     if (unix_socket) {
-      this.app.on("listening", function() {
+      server.on("listening", () => {
         // set permissions
-        return fs.chmod(this.listen, 777)
+        return fs.chmod(this.listen, 0o777, err => err && console.error(err))
       })
 
       // double-check EADDRINUSE
-      this.app.on("error", function(e) {
+      server.on("error", e => {
         if (e.code !== "EADDRINUSE") throw e
         net
-          .connect({ path: this.listen }, function() {
+          .connect({ path: this.listen }, () => {
             // really in use: re-throw
             throw e
           })
-          .on("error", function(e) {
+          .on("error", e => {
             if (e.code !== "ECONNREFUSED") throw e
             // not in use: delete it and re-listen
             fs.unlinkSync(this.listen)
-            listen()
+            server.listen(this.listen)
           })
       })
     }
