@@ -15,8 +15,6 @@ import {
   RSSBuilder
 } from "~/Utils"
 
-import ua from "universal-analytics"
-
 const sendResponse = function(res, status = 200, content = "ok") {
   res.status(status)
   res.send(content)
@@ -67,13 +65,6 @@ const requestHandler = function(feedsAPI, statsAPI) {
                       `Failed to save view for ${podcast.identifier}!`
                     )
                 )
-              ua("UA-59716320-1")
-                .pageview(
-                  "/rss",
-                  podcast.feed_url.replace(/\/rss$/, ""),
-                  podcast.title
-                )
-                .send()
             }
           }
         })

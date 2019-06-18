@@ -2,6 +2,8 @@ import { empty } from "../Utils"
 
 import { PodcastViewAppeal } from "podcloud-stats"
 
+import ua from "universal-analytics"
+
 export class podCloudStatsAPI {
   constructor() {}
 
@@ -43,6 +45,16 @@ export class podCloudStatsAPI {
       }
 
       PodcastViewAppeal.process(payload).then(resolve, reject)
+
+      ua("UA-59716320-1")
+        .pageview({
+          dl: podcast.feed_url,
+          ua: payload.ua,
+          uip: payload.ip,
+          dr: payload.ref,
+          dt: podcast.title
+        })
+        .send()
     })
   }
 }
