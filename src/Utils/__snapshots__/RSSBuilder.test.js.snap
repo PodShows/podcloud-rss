@@ -31,6 +31,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
+        <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
@@ -41,6 +42,8 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
             <dc:creator><![CDATA[podCloud]]></dc:creator>
             <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+            <itunes:author>podCloud</itunes:author>
+            <itunes:episodeType></itunes:episodeType>
         </item>
         <item>
             <title><![CDATA[Nouvelle formule de popularité]]></title>
@@ -115,6 +118,7 @@ P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un p
             <itunes:explicit>yes</itunes:explicit>
             <itunes:duration>1:33:04</itunes:duration>
             <itunes:author>podCloud</itunes:author>
+            <itunes:episodeType></itunes:episodeType>
         </item>
     </channel>
 </rss>"
@@ -151,6 +155,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
+        <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <itunes:new-feed-url>http://example.com/newfeed.rss</itunes:new-feed-url>
     </channel>
@@ -186,6 +191,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:owner>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
+        <itunes:type>episodic</itunes:type>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
             <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
@@ -194,6 +200,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
             <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
             <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+            <itunes:episodeType></itunes:episodeType>
         </item>
         <item>
             <title><![CDATA[Nouvelle formule de popularité]]></title>
@@ -266,6 +273,7 @@ Mais après tout peut importe, le but est simplement de faire découvrir des pod
 P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
             <itunes:explicit>no</itunes:explicit>
             <itunes:duration>1:33:04</itunes:duration>
+            <itunes:episodeType></itunes:episodeType>
         </item>
     </channel>
 </rss>"
@@ -296,6 +304,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:keywords>news, blog, podCloud, podCloud</itunes:keywords>
         <itunes:author>Anonyme</itunes:author>
         <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:type>episodic</itunes:type>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
             <description><![CDATA[<p>Vous souhaitez savoir si vous faites partie d&#39;une niche ou d&#39;un sujet très largement couvert par la communauté ?</p>
@@ -304,6 +313,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <link>http://blog.podcloud.fr/publication-des-statistiques-du-catalogue-podcloud</link>
             <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
             <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+            <itunes:episodeType></itunes:episodeType>
         </item>
         <item>
             <title><![CDATA[Nouvelle formule de popularité]]></title>
@@ -376,6 +386,7 @@ Mais après tout peut importe, le but est simplement de faire découvrir des pod
 P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un peu votre place à d&apos;autres et ne vous inquiétez pas, vous y serez de nouveau, on a confiance en vous !</itunes:summary>
             <itunes:explicit>no</itunes:explicit>
             <itunes:duration>1:33:04</itunes:duration>
+            <itunes:episodeType></itunes:episodeType>
         </item>
     </channel>
 </rss>"
@@ -412,6 +423,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
+        <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
@@ -422,6 +434,8 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <guid isPermaLink=\\"false\\">5a16a586a9b49731e60003c7</guid>
             <dc:creator><![CDATA[podCloud]]></dc:creator>
             <pubDate>Thu, 23 Nov 2017 10:40:00 GMT</pubDate>
+            <itunes:author>podCloud</itunes:author>
+            <itunes:episodeType></itunes:episodeType>
         </item>
         <item>
             <title><![CDATA[Nouvelle formule de popularité]]></title>
@@ -496,6 +510,7 @@ P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un p
             <itunes:explicit>no</itunes:explicit>
             <itunes:duration>1:33:04</itunes:duration>
             <itunes:author>podCloud</itunes:author>
+            <itunes:episodeType></itunes:episodeType>
         </item>
     </channel>
 </rss>"
