@@ -57,6 +57,10 @@ export default function RSSBuilder(podcast) {
     rss_feed.custom_elements.push({ "itunes:block": "yes" })
   }
 
+  rss_feed.custom_elements.push({
+    "itunes:type": podcast.ordering === "asc" ? "serial" : "episodic"
+  })
+
   if (podcast.itunes_category) {
     rss_feed.custom_elements.push(buildiTunesCategory(podcast.itunes_category))
   }
@@ -81,6 +85,8 @@ export default function RSSBuilder(podcast) {
 
       const has_enclosure = typeof item.enclosure === "object"
 
+      rss_item.custom_elements = []
+
       if (has_enclosure) {
         let chronic_duration = ""
         let seconds = item.enclosure.duration
@@ -96,7 +102,7 @@ export default function RSSBuilder(podcast) {
           ":" +
           ("00" + seconds).slice(-2)
 
-        rss_item.custom_elements = [
+        rss_item.custom_elements.push(
           {
             "itunes:image": {
               _attr: {
@@ -107,18 +113,34 @@ export default function RSSBuilder(podcast) {
           { "itunes:summary": item.text_content.substring(0, 3999) },
           { "itunes:explicit": podcast.explicit ? "yes" : "no" },
           { "itunes:duration": chronic_duration }
-        ]
+        )
 
         rss_item.enclosure = item.enclosure
       }
 
       if (notEmpty(item.author)) {
         rss_item.author = item.author
-        if (has_enclosure) {
-          rss_item.custom_elements.push({
-            "itunes:author": item.author
-          })
-        }
+        rss_item.custom_elements.push({
+          "itunes:author": item.author
+        })
+      }
+
+      if (item.episode_type !== null) {
+        rss_item.custom_elements.push({
+          "itunes:episodeType": item.episode_type
+        })
+      }
+
+      if (+item.season > 0) {
+        rss_item.custom_elements.push({
+          "itunes:season": item.season
+        })
+      }
+
+      if (+item.episode > 0) {
+        rss_item.custom_elements.push({
+          "itunes:episode": item.episode
+        })
       }
 
       feed.item(rss_item)
