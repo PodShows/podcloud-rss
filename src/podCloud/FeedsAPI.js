@@ -52,6 +52,7 @@ export default class podCloudFeedsAPI {
               itunes_category
               feed_redirect_url
               copyright
+              ordering
               updated_at
               items {
                 title
@@ -62,6 +63,9 @@ export default class podCloudFeedsAPI {
                 published_at
                 url
                 explicit
+                episode_type
+                season
+                episode
                 ... on Episode {
                   cover_url
                   enclosure {
