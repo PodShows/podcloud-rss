@@ -1,6 +1,6 @@
 {
   "name": "podcloud-rss",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "description": "Generating rss feeds from graphQL for podCloud",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node",
