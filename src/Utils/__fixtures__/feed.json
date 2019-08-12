@@ -5,7 +5,9 @@
       "Retrouvez ici les actualités et les annonces de l'équipe de podCloud. \r\nN'hésitez pas à commenter les news, on vous répondra!",
     "catchline": "Blog officiel de podCloud",
     "feed_url": "http://blog.podcloud.fr/rss",
-    "cover_url": "http://blog.podcloud.fr/cover.jpg",
+    "cover": {
+      "url": "http://blog.podcloud.fr/cover.jpg"
+    },
     "website_url": "http://blog.podcloud.fr/",
     "language": "fr",
     "contact_email": "team@podcloud.fr",
@@ -48,7 +50,11 @@
             "http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/enclosure.mp3?p=f",
           "type": "audio/mpeg",
           "size": 134141511,
-          "duration": 5584
+          "duration": 5584,
+          "cover": {
+            "url":
+              "http://stats.podcloud.fr/p2p/p2p-72-le-streetcast-assassine-par-elise-lucet-a-la-manette-croissantee/cover.1234.jpg"
+          }
         }
       }
     ]
@@ -59,7 +65,9 @@
       "Retrouvez ici les actualités et les annonces de l'équipe de podCloud. \r\nN'hésitez pas à commenter les news, on vous répondra!",
     "catchline": "Blog officiel de podCloud",
     "feed_url": "http://blog.podcloud.fr/rss",
-    "cover_url": "http://blog.podcloud.fr/cover.jpg",
+    "cover": {
+      "url": "http://blog.podcloud.fr/cover.jpg"
+    },
     "website_url": "http://blog.podcloud.fr/",
     "language": "fr",
     "contact_email": "team@podcloud.fr",

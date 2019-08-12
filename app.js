@@ -6,7 +6,7 @@ const feeds_host = config.get("hosts") && config.get("hosts").feeds
 
 const feedsAPIURL =
   (feeds_host &&
-    (feeds_host.match(/^https?:\/\//) ? feeds_host : "http://" + feeds_host) +
+    (feeds_host.match(/^https?:\/\//) ? feeds_host : "https://" + feeds_host) +
       "/graphql") ||
   null
 
