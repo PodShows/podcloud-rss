@@ -40,7 +40,9 @@ export default class podCloudFeedsAPI {
               description
               catchline
               feed_url
-              cover_url
+              cover {
+                url
+              }
               website_url
               language
               contact_email
@@ -67,8 +69,10 @@ export default class podCloudFeedsAPI {
                 season
                 episode
                 ... on Episode {
-                  cover_url
                   enclosure {
+                    cover {
+                      url
+                    }
                     url
                     type
                     size

@@ -1,9 +1,0 @@
-{
-  "listen": "/tmp/podcloud.rss.preprod.sock",
-  "mongodb": "mongodb://localhost/podcloud_beta",
-  "hosts": {
-    "podcasts": "pp.lepodcast.fr",
-    "platform": "pp.podcloud.fr",
-    "feeds": "feeds.pp.podcloud.fr"
-  }
-}

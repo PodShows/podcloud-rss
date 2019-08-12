@@ -12,7 +12,7 @@ export default function RSSBuilder(podcast) {
     description: podcast.description,
     site_url: podcast.website_url,
     feed_url: podcast.feed_url,
-    image_url: podcast.cover_url,
+    image_url: podcast.cover.url,
     language: podcast.language,
     copyright: podcast.copyright,
     pubDate: podcast.updated_at,
@@ -34,7 +34,7 @@ export default function RSSBuilder(podcast) {
       {
         "itunes:author": notEmpty(podcast.author) ? podcast.author : "Anonyme"
       },
-      { "itunes:image": { _attr: { href: podcast.cover_url } } }
+      { "itunes:image": { _attr: { href: podcast.cover.url } } }
     ]
   }
 
@@ -106,7 +106,7 @@ export default function RSSBuilder(podcast) {
           {
             "itunes:image": {
               _attr: {
-                href: item.cover_url
+                href: item.enclosure.cover.url
               }
             }
           },
