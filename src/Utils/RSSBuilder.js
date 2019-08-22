@@ -7,6 +7,8 @@ export default function RSSBuilder(podcast) {
   if (typeof podcast !== "object" || podcast === null || podcast === {})
     return null
 
+  let _cdata = stuff => ({ _cdata: stuff })
+
   let rss_feed = {
     title: podcast.title,
     description: podcast.description,
@@ -16,23 +18,25 @@ export default function RSSBuilder(podcast) {
     language: podcast.language,
     copyright: podcast.copyright,
     pubDate: podcast.updated_at,
-    generator: "podcloud-rss 1.1.3",
+    generator: "podcloud-rss 1.1.4",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
     },
     custom_elements: [
       {
-        "itunes:summary": {
-          _cdata: podcast.description.substring(0, 3950)
-        }
+        "itunes:summary": _cdata(podcast.description.substring(0, 3950))
       },
       {
-        "itunes:subtitle": { _cdata: podcast.catchline.substring(0, 255) }
+        "itunes:subtitle": _cdata(podcast.catchline.substring(0, 255))
       },
       { "itunes:explicit": podcast.explicit ? "yes" : "no" },
-      { "itunes:keywords": podcast.tags.concat(["podCloud"]).join(", ") },
       {
-        "itunes:author": notEmpty(podcast.author) ? podcast.author : "Anonyme"
+        "itunes:keywords": _cdata(podcast.tags.concat(["podCloud"]).join(", "))
+      },
+      {
+        "itunes:author": _cdata(
+          notEmpty(podcast.author) ? podcast.author : "Anonyme"
+        )
       },
       { "itunes:image": { _attr: { href: podcast.cover.url } } }
     ]
@@ -45,10 +49,10 @@ export default function RSSBuilder(podcast) {
 
     if (notEmpty(podcast.author)) {
       webmaster += " (" + podcast.author + ")"
-      itunesOwner.push({ "itunes:name": podcast.author })
+      itunesOwner.push({ "itunes:name": _cdata(podcast.author) })
     }
 
-    rss_feed.webMaster = webmaster
+    rss_feed.webMaster = _cdata(webmaster)
     itunesOwner.push({ "itunes:email": podcast.contact_email })
     rss_feed.custom_elements.push({ "itunes:owner": itunesOwner })
   }
@@ -110,7 +114,7 @@ export default function RSSBuilder(podcast) {
               }
             }
           },
-          { "itunes:summary": item.text_content.substring(0, 3999) },
+          { "itunes:summary": _cdata(item.text_content.substring(0, 3999)) },
           { "itunes:explicit": podcast.explicit ? "yes" : "no" },
           { "itunes:duration": chronic_duration }
         )
@@ -121,7 +125,7 @@ export default function RSSBuilder(podcast) {
       if (notEmpty(item.author)) {
         rss_item.author = item.author
         rss_item.custom_elements.push({
-          "itunes:author": item.author
+          "itunes:author": _cdata(item.author)
         })
       }
 

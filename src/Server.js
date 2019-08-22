@@ -48,13 +48,13 @@ const requestHandler = function(feedsAPI, statsAPI) {
                 const redirect_url = url.parse(podcast.feed_redirect_url)
                 res.status(301)
                 res.header("Location", redirect_url.href)
-                res.send(rss.xml({ indent: true }).replace("&amp;", "&"))
+                res.send(rss.xml({ indent: true }))
                 res.end()
               } catch (e) {
                 send404(res)
               }
             } else {
-              res.send(rss.xml({ indent: true }).replace("&amp;", "&"))
+              res.send(rss.xml({ indent: true }))
               console.log(`Saving view for ${podcast.identifier}...`)
               statsAPI
                 .saveView(podcast, req)
