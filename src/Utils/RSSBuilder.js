@@ -18,7 +18,7 @@ export default function RSSBuilder(podcast) {
     language: podcast.language,
     copyright: podcast.copyright,
     pubDate: podcast.updated_at,
-    generator: "podcloud-rss 1.1.4",
+    generator: "podcloud-rss 1.1.5",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
     },
@@ -52,7 +52,7 @@ export default function RSSBuilder(podcast) {
       itunesOwner.push({ "itunes:name": _cdata(podcast.author) })
     }
 
-    rss_feed.webMaster = _cdata(webmaster)
+    rss_feed.webMaster = webmaster
     itunesOwner.push({ "itunes:email": podcast.contact_email })
     rss_feed.custom_elements.push({ "itunes:owner": itunesOwner })
   }
