@@ -92,10 +92,12 @@ export default class podCloudFeedsAPI {
         if (
           typeof resp === "object" &&
           typeof resp.data === "object" &&
-          typeof resp.data.podcastForFeedWithIdentifier === "object"
+          typeof resp.data.podcastForFeedWithIdentifier === "object" &&
+          typeof resp.errors !== "object"
         ) {
           return Promise.resolve(resp.data.podcastForFeedWithIdentifier);
         }
+
         return Promise.reject(resp);
       });
   }
