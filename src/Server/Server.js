@@ -69,6 +69,7 @@ const requestHandler = function(feedsAPI, statsAPI) {
           }
         })
         .catch(error => {
+          console.error(`Error for feed: ${identifier}`);
           console.error(error);
           send500(res, error);
         });
