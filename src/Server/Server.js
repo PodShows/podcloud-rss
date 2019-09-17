@@ -24,7 +24,7 @@ const send500 = function(res, content = "An error occured") {
   sendResponse(res, 500, content)
 }
 
-const send404 = function(res, content = "Not found") {
+const send404 = function(res, content = "Feed not found") {
   sendResponse(res, 404, content)
 }
 

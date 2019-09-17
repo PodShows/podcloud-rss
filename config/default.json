@@ -1,6 +1,6 @@
 {
-  "listen": 8880,
-  "mongodb": "mongodb://localhost/podcloud_development",
+  "listen": 80,
+  "mongodb": "mongodb://mongo.podcloud/podcloud_development",
   "hosts": {
     "podcasts": "lepodcast.test",
     "platform": "podcloud.test",

@@ -1,5 +1,5 @@
 export const isObject = function(obj) {
-  return !!(typeof obj === "object" && obj);
+  return !!(typeof obj === "object" && obj)
 }
 
 export const notEmpty = function(obj) {
@@ -15,5 +15,7 @@ export const getFeedIdentifierFromRequest = function(request) {
     typeof request.query === "object" &&
     notEmpty(request.query.identifier)
     ? request.query.identifier
-    : request.get("host").replace(/^((.*)\.)?(podcloud|lepodcast)\.fr$/, "$2")
+    : request
+        .get("host")
+        .replace(/^((.*)\.)?(podcloud|lepodcast)\.(fr|test)$/, "$2")
 }

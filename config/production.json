@@ -1,6 +1,6 @@
 {
-  "listen": "/tmp/podcloud.rss.production.sock",
-  "mongodb": "mongodb://barry.podshows.fr/podcloud",
+  "listen": 80,
+  "mongodb": "mongodb://mongo.podcloud/podcloud",
   "hosts": {
     "podcasts": "lepodcast.fr",
     "platform": "podcloud.fr",
