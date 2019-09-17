@@ -1,14 +1,14 @@
 export const isObject = function(obj) {
-  return !!(typeof obj === "object" && obj)
-}
+  return !!(typeof obj === "object" && obj);
+};
 
 export const notEmpty = function(obj) {
-  return typeof obj === "string" && obj.trim().length > 0
-}
+  return typeof obj === "string" && obj.trim().length > 0;
+};
 
 export const empty = function(obj) {
-  return !notEmpty(obj)
-}
+  return !notEmpty(obj);
+};
 
 export const getFeedIdentifierFromRequest = function(request) {
   return typeof request === "object" &&
@@ -17,5 +17,5 @@ export const getFeedIdentifierFromRequest = function(request) {
     ? request.query.identifier
     : request
         .get("host")
-        .replace(/^((.*)\.)?(podcloud|lepodcast)\.(fr|test)$/, "$2")
-}
+        .replace(/^((.*)\.)?(podcloud|lepodcast)\.(fr|test)$/, "$2");
+};

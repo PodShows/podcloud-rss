@@ -255,19 +255,19 @@ export const iTunesCategories = {
   tv_and_film: {
     name: "TV & Film"
   }
-}
+};
 
 export function buildiTunesCategory(category_slug) {
-  let result = {}
+  let result = {};
 
   if (iTunesCategories.hasOwnProperty(category_slug)) {
-    const category = iTunesCategories[category_slug]
+    const category = iTunesCategories[category_slug];
     result["itunes:category"] = {
       _attr: { text: category.name }
-    }
+    };
 
     if (category.parent && iTunesCategories.hasOwnProperty(category.parent)) {
-      const parent_category = iTunesCategories[category.parent]
+      const parent_category = iTunesCategories[category.parent];
 
       result = {
         "itunes:category": [
@@ -278,9 +278,9 @@ export function buildiTunesCategory(category_slug) {
           },
           result
         ]
-      }
+      };
     }
   }
 
-  return result
+  return result;
 }
