@@ -1,30 +1,25 @@
 language: node_js
 sudo: false
-
 node_js:
   - 10
-
 install:
   - npm install
-
 env:
   - NODE_ENV=test
-
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - secure: p8Igjzx0ri0/pPDvmw2+8YCxRY2yp+bf51F+ofCfSsaI/AaIZYacX8Op2CfnzMKgFFV9nkVI5ID6P9/dFCSqgsG8RxP7R63QbMYqfk0S4oEiUav6n3G/XZQP7vYkKYy9hQp3JpF5KakeOcxEY/4lrCCBzz60tP8e1dhd/QmsU4gdjDVffZ3eneeQTy8TiSUKbrSfXln3vBN0QcflYRIoufzIoIiNOQ6WnCU/p7RUM0p0QZHRvIrGfDsnUx31gK4crbuHOxdLIDZ6CplCMEiFXvRb5FTFeFwAvyKv65XAqPq+wLcX57mFMU3j7K3iddZGlUqO7NeUYNE0Iy6Kl8iSWXk/dqhAvvAnxpbbzYaF6xAZ4fQ9jj8gsaZkBEqs+W8VAtwFjkvCGuyAKDkRJ7rxrbyvjb2CjvlRBtu5e03nWAk8QBFQJI032c/DtTL/5S671qZ/qyXpQTpHTMtiZrZ+P5Pl9Rn0BLKLsF8APOZK0f3sratYGjS1xjt4jrWPfu9hzQUNzNl3rjN9DeYiHNTm0KCzqsQ7CtOkEmNDJUAxqmHh1Nvjk+Oj2O2QKpLVnnbMUcaBFuZ6pVBmyu6uboatSskovi7lBZk4z26AXpIdS2ip7NnhbKXYerLGs1OfH2i7jHIz5zC3Y23XiLbgGipej2k6gidTb2SEypJVt2IaIpE=
+  - secure: BQeH5oWIdkDQvfMZg4djRIgPqeGR4sLDSpPUpk7UdMP9A0N1z5AoBDOi+4jUQJEQT0+Z0eJU/jh81ShOIotJR4hJ3DlNkXKbFckF9CD5zP2L1/lTMeX75zqwMzBMTQKFOMrU9ToTLj6XpbPYrs81rjVMcPDnamx7jzlPc1DwdkNBiZpy19tSiXJCfjo7gk9efOdRk2DlJ2+fGDTmQqaZvhiyhc+LOqN2efzjN+2hp2d9fdeptsdiN3oOA56y9OqLqll4uKIWw/0Ju+JpzApnpCSnnNQc0TaA+sNsU+K6FislseIsMV2g53kBRPq3P1g8TDuuhHlAsZY9kgmwyg1Kc60FWAhNkYSIqT98N1GR8oGlN1/bUSoQhrZi6/BTtemCvq6KfXDnmiTuUJc7dJRJVXMssMD7xLCfYXM7sOfLvs1NcEdCbhFPVj4GbLacGHXdiBS1gXGylwFatb4U3EKk5LSdPQqDlwxYpgY5uKlToEESC1YMElpUWcF0ecQLtM06k1REVY4SxRSoeOsR+4aaRCY9dDoKJda7baLWDl2tKN8pBUhyklAy8LstouRDwLJhmy+tDjtEuLNhGkZBf/FuXUsgSKmSUyzI07Lzow7dUPsgWEgCXIU8RZwU6k1BVbuKkM9jpnhdcQ74SkKuRsTd2lwb8M4UjsZxyx3PbTxD1zA=
 script:
   - npm run codecov
-  - secure: i+RQZrT6EPZb+0bMI5Eh66H+oBn6Cd8z2eu2Z1C0ZcX31OdF+9LmJg+61+KdoncarrDdNQJnF59GgXDXSiY6ASw/53GAIhwcDFsgR2w9SO/ACogpe4lQflRmIMKtAtLAI0N9IlwnxZF28kgNbePkn46jEBYjcXv8C/PnRMLHC3r9m3jVxgQEakqFRbYBVhbTF4DMuXYdLYzuPrZpmHxJofg21To30BmSza2OJtTYKl7/OpbPqWZ6xnDZXb+bHjYXHyWUq4n103+sXgop+szzOhGYlsUURJBlGTkBOMKOEWEF6SnIy9a19Oj29F8TazrrZ9QWUy47eQuOT0EI2+IksTz5yQ+K7Ht8qZZlDZmHWu8zLcb0h+nilintt8Gl98nyfKt5p+P5WHOjWOUNfrbX1I5FfnZwVqXwyiVDSP9ALdvcwRkj6SaXJrjxOzlXrwxFyRhbkXZv+RpTcET7U64ic+iN+mkkq9hgM1osMmBGa8jLD1qTLf73vAZChOC0kUTnoux+pDcvMBQOedMQfqnF3lPyPOcfbfy5yme2ZUM0InWNQNQSfAzHacOMm2CRPt82NaJImFwIneOlN+ShUb1AMPyJ1XDFXAQOZ2VwFh4IYWUuKHWaWbenmgMHqd7CgTnF2AY5bPc5Ro7bVXCzd57uOxJiSm9HuDizV39xC2ApT1Y=
-  - secure: APnBYe0sRBlVHjQHWHhUZyJqMmwqFHXpq0jliXWieZHuu/4Q2iOWCYZbf021y1tGl/Nf6XgAr6OJJnq4FyVW9rdd2vR+kgkGXHv7aRqVRVjiT+9+siR54jYBVTL2TeZ28hBjRtKxS6Lq7S6nHwt98VPWkPeoUWWBkhH8p8YRBsaiFh6b6Q0z4/2iMeo5mWlT5Ke1LKRJIIjLkBgkO5n8EpeFTgOgG8UvGb8/akIBynl2jXK0jgKbYdBHq3Qd+voFlpb5qlYN0zqHX1Qtw53CaZGrVLffSFpZaMkOwB1Uu1yudMzOxlgKfjJEgZjYwD7/eOoubUE8SnQ8KJUDVSUb72XEJOR9cOA9lvHA8Lk1mYT7F0dZtHefSiGQhCe9lYs3qIMEa7O71G0L02xey2MVRIz2ZV39IS7Y7RkpAo0jxeUBc9pppVrEFloc9niYA7ah8EA0RPQb5KQxoJZ24EuT5/qpcTge7FOZTtFwL1AmUxJg7iDh2G1VjZxOBIVN+UVazgv+bfp/tUa9/o3pkzSRQulah1Gyf6aDsxcd45W6YuyPFZIwGia8S+72EAdoZ0bWWUY/creqLbDKXaRtIinodvhdbeM5WzDwRzl+juMdqlyi9phQbhA1qFHTPrlPcLuZmwqE0S8kVBtDSDhmTDMLAUHjSW4lSaYdT07NW2Fk2do=
-
 after_success:
-- docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-- export REPO=podshows/podcloud-rss
-- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
-  ; fi`
-- docker build -f Dockerfile -t $REPO:$COMMIT .
-- docker tag $REPO:$COMMIT $REPO:$TAG
-- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-- docker push $REPO
-
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - export REPO=podshows/podcloud-rss
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+    ; fi`
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_60b4ecdad46d_key -iv $encrypted_60b4ecdad46d_iv
     -in .deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -32,7 +27,6 @@ before_deploy:
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
   - ssh-keyscan barry.podshows.fr >> ~/.ssh/known_hosts
-
 deploy:
   - provider: script
     script: "./deploy.sh"
