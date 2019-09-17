@@ -1,32 +1,35 @@
 language: node_js
 sudo: false
-
 node_js:
   - 10
-
 install:
   - npm install
-
 env:
-  - NODE_ENV=test
-
+  global:
+      - secure: "Yg6hBwpioQEizk6SZ3o9ggZazjmp2yyxdXpK2/W1nncPyHbBYZh7GwWLUg7x/r5CZr6W59+SPHU3VDx3SwK38Eroxq18xQKxIXE7qEIO8t4VeWagv+4ZZ7y5qGOtAABgjl7X1PxCMAU+EmIESncilT0KzhBerED504LRrkFX4tPACXm0ZKyW5ZzTullfdQfQgyAnY03bl/hocfEqivYFNrhBDuW2r6bexp//WCzexmLxYLlWGXX7eAAeRNBicyBwpUkF48v/H0WdTaExY2sMeflJ/EZ7iJT1wTvBCSrVX/BbU9L9NUIAuYubNptJ2y7XbIomFGpNtqbagzC94+kdK7c6kDbGnvrL4VjEtLO+RcwM/cLgjcJ2ntfZaueCa7lyhL8YYK4FcXOmVi1pg8bfHXaDmxSCdz0NQDbsR58yWHvofMHQY97dzw/IS9Oo70WHg9YJcaFhEFpmoPq4cdk+m2TypSTbWsSZwRaV6Hag18ysMbRIq/oQ/eoS+y4+ivjP+fAO2o97Tblsot7KJJ5XwA0oRLpOAkIB/KnsX6YBYk7/T5/dFt0NRcJoeGpUapSudT74QkrlC7Fsr3PFWwZEjzSoj0ShsiyE3Uu3IgkmZSu2IxsOLBsxkoW6Ku3U41rq4wBR4LAhSC5IgVcluUiIFisN0asOZKhpY7NW5mvBBng="
+      - secure: "CqBxqRAl6PITPJ0ixZVSQ9c96sYjDVALJ0VgnthOJpZSw17Tzhra6/RBCKuVTta7fWkLRrbHlaufFfIXXZqRTcIYV1r0Quatvptk0CaJ+jg1fTGbQnhQ+ZYCUTzyRtLiVuC6Hg/D4jZRGCfShpSEEcEoVNvnLspFU2MLCmXGRO86b40LJSkDqHKpKdMW+ISQCrJ7FQvpYp5ee0PumtJOthRJDX/9ZRdcB1R/oAvbEatsxO9X82c0ZSyuTGJZgQG8rWeZXhsP07Gl+21VjPZ+2HppbfaB15uavHb6/lKU33QjmSDkjgDivRiRbENHkZdMSsrXMrMbLgZ6+ITGUQtsXI8rIpGaCpifr3gZTzGm/rmsuwjYUqTVmm774h/H+CqasKWZbyncRPhk0GLkfLgbTmguLIUcjVs1B6wO2dPyEyUxJYKIzPaQuFl1v1BaPq6OjOWaLVeaED6Gv4zCY0YgD6JNoPRv/DfYvkZXn4Bv76e6C0tLNy8p1z9FlsQVU5dPeoyOnasuVvhIhH2tQ+MZ/wB7erD585R9OsI1+/hXtPYa2oyzL8OOWUDR48tV9pNDNJxoRQ2yJMYKfZAXCsCeXo5obI9QTlMg33G+aAutLD2C9WV8Rar+XqN+/zfQttFQOcziQFpoVFLswuQBolXrVQsK5V/qkfch6EgykUuO9hA="
+      - NODE_ENV=test
+      - COMMIT=${TRAVIS_COMMIT::8}
 script:
   - npm run codecov
-
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - export REPO=podshows/podcloud-rss
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+    ; fi`
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_60b4ecdad46d_key -iv $encrypted_60b4ecdad46d_iv -in .deploy_rsa.enc -out /tmp/deploy_rsa -d
+  - openssl aes-256-cbc -K $encrypted_60b4ecdad46d_key -iv $encrypted_60b4ecdad46d_iv
+    -in .deploy_rsa.enc -out /tmp/deploy_rsa -d
   - eval "$(ssh-agent -s)"
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
-
+  - ssh-keyscan barry.podshows.fr >> ~/.ssh/known_hosts
 deploy:
   - provider: script
-    script: ./deploy.sh production
+    script: "./deploy.sh"
     on:
       branch: master
-
-# Disable preprod
-#  - provider: script
-#    script: ./deploy.sh preprod 
-#    on:
-#      branch: develop

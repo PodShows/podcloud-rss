@@ -1,0 +1,22 @@
+# project_name=podcloud-rss
+version: "3"
+services:
+  rss: # scale=3
+    image: podshows/podcloud-rss:latest
+    networks:
+      - traefik
+      - podcloud
+    volumes:
+      - ./config:/usr/src/app/config
+    restart: always
+    labels:
+      traefik.enable: true
+      traefik.backend: "podcloud-rss"
+      traefik.frontend.rule: "HostRegexp:{subdomain:.*}{host:podcloud|lepodcast}.fr;Path:/rss"
+      traefik.frontend.priority: 900
+
+networks:
+  podcloud:
+    external: true
+  traefik:
+    external: true

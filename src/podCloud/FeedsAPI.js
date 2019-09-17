@@ -1,27 +1,27 @@
 // polyfill
-import "isomorphic-fetch"
+import "isomorphic-fetch";
 
-import gql from "graphql-tag"
+import gql from "graphql-tag";
 
-import { execute, makePromise } from "apollo-link"
-import { HttpLink } from "apollo-link-http"
+import { execute, makePromise } from "apollo-link";
+import { HttpLink } from "apollo-link-http";
 
 class GraphQLSimpleHttpClient {
   constructor(uri) {
-    this.link = new HttpLink({ uri })
+    this.link = new HttpLink({ uri });
   }
 
   query(operation) {
     /* istanbul ignore next */
-    return makePromise(execute(this.link, operation))
+    return makePromise(execute(this.link, operation));
   }
 }
 
-let defaultClient
+let defaultClient;
 export default class podCloudFeedsAPI {
   constructor(endpoint_url) {
-    if (!endpoint_url) throw "An endpoint url is required"
-    defaultClient = new GraphQLSimpleHttpClient(endpoint_url)
+    if (!endpoint_url) throw "An endpoint url is required";
+    defaultClient = new GraphQLSimpleHttpClient(endpoint_url);
   }
 
   getFeedWithIdentifier(
@@ -94,9 +94,9 @@ export default class podCloudFeedsAPI {
           typeof resp.data === "object" &&
           typeof resp.data.podcastForFeedWithIdentifier === "object"
         ) {
-          return Promise.resolve(resp.data.podcastForFeedWithIdentifier)
+          return Promise.resolve(resp.data.podcastForFeedWithIdentifier);
         }
-        return Promise.reject(resp)
-      })
+        return Promise.reject(resp);
+      });
   }
 }

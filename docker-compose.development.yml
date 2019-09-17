@@ -1,0 +1,26 @@
+# project_name=podcloud-rss
+version: "3.4"
+services:
+  rss:
+    image: "podcloud-rss"
+    build:
+      context: .
+      target: runner
+    volumes:
+      - .:/usr/src/app
+      - ~/.docker/traefik/ca/cert.pem:/ca.crt
+    networks:
+      - traefik
+      - podcloud
+    environment:
+        NODE_EXTRA_CA_CERTS: /ca.crt
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
+    labels:
+      traefik.frontend.rule: "HostRegexp:{subdomain:.*}{host:podcloud|lepodcast}.test;Path:/rss"
+      traefik.frontend.priority: 900
+
+networks:
+  podcloud:
+    external: true
+  traefik:
+    external: true

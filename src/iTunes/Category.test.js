@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { buildiTunesCategory } from "./Category"
+import { buildiTunesCategory } from "./Category";
 
 describe("buildiTunesCategory", () => {
   test("produce a result for a simple category", () => {
@@ -10,8 +10,8 @@ describe("buildiTunesCategory", () => {
           text: "TV & Film"
         }
       }
-    })
-  })
+    });
+  });
 
   test("produce a result for a nested category", () => {
     expect(buildiTunesCategory("shopping")).toEqual({
@@ -29,10 +29,10 @@ describe("buildiTunesCategory", () => {
           }
         }
       ]
-    })
-  })
+    });
+  });
 
   test("produce no result for an unknown category", () => {
-    expect(buildiTunesCategory("ultimate_ninja")).toEqual({})
-  })
-})
+    expect(buildiTunesCategory("ultimate_ninja")).toEqual({});
+  });
+});
