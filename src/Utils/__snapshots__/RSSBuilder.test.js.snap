@@ -31,6 +31,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
+        <googleplay:block>no</googleplay:block>
         <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <item>
@@ -154,7 +155,8 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:name><![CDATA[podCloud]]></itunes:name>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
-        <itunes:block>yes</itunes:block>
+        <itunes:block>no</itunes:block>
+        <googleplay:block>yes</googleplay:block>
         <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <itunes:new-feed-url>http://example.com/newfeed.rss</itunes:new-feed-url>
@@ -191,6 +193,8 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:owner>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
+        <itunes:block>no</itunes:block>
+        <googleplay:block>no</googleplay:block>
         <itunes:type>episodic</itunes:type>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
@@ -304,6 +308,8 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:keywords><![CDATA[news, blog, podCloud, podCloud]]></itunes:keywords>
         <itunes:author><![CDATA[Anonyme]]></itunes:author>
         <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
+        <itunes:block>no</itunes:block>
+        <googleplay:block>no</googleplay:block>
         <itunes:type>episodic</itunes:type>
         <item>
             <title><![CDATA[Publication des statistiques du catalogue podCloud]]></title>
@@ -423,6 +429,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
             <itunes:email>team@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
+        <googleplay:block>no</googleplay:block>
         <itunes:type>episodic</itunes:type>
         <itunes:category text=\\"Comedy\\"/>
         <item>

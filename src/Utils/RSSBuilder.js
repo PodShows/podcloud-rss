@@ -57,9 +57,13 @@ export default function RSSBuilder(podcast) {
     rss_feed.custom_elements.push({ "itunes:owner": itunesOwner });
   }
 
-  if (podcast.itunes_block) {
-    rss_feed.custom_elements.push({ "itunes:block": "yes" });
-  }
+  rss_feed.custom_elements.push({
+    "itunes:block": podcast.itunes_block ? "yes" : "no"
+  });
+
+  rss_feed.custom_elements.push({
+    "googleplay:block": podcast.googleplay_block ? "yes" : "no"
+  });
 
   rss_feed.custom_elements.push({
     "itunes:type": podcast.ordering === "asc" ? "serial" : "episodic"
