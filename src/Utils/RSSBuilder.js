@@ -20,7 +20,8 @@ export default function RSSBuilder(podcast) {
     pubDate: podcast.updated_at,
     generator: "podcloud-rss 1.1.5",
     custom_namespaces: {
-      itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd"
+      itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
+      googleplay: "http://www.google.com/schemas/play-podcasts/1.0"
     },
     custom_elements: [
       {
