@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`explicit feed 1`] = `
-"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:googleplay=\\"http://www.google.com/schemas/play-podcasts/1.0\\">
     <channel>
         <title><![CDATA[podCloud Blog]]></title>
         <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
@@ -126,7 +126,7 @@ P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un p
 `;
 
 exports[`feed disabled 1`] = `
-"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:googleplay=\\"http://www.google.com/schemas/play-podcasts/1.0\\">
     <channel>
         <title><![CDATA[podCloud Blog]]></title>
         <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
@@ -165,7 +165,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
 `;
 
 exports[`feed_without_optional infos but author email 1`] = `
-"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:googleplay=\\"http://www.google.com/schemas/play-podcasts/1.0\\">
     <channel>
         <title><![CDATA[podCloud Blog]]></title>
         <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
@@ -284,7 +284,7 @@ P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un p
 `;
 
 exports[`feed_without_optional infos nor author email 1`] = `
-"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:googleplay=\\"http://www.google.com/schemas/play-podcasts/1.0\\">
     <channel>
         <title><![CDATA[podCloud Blog]]></title>
         <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
@@ -399,7 +399,7 @@ P.S. Pour ceux habitués à être dans le top 5, il était temps de laisser un p
 `;
 
 exports[`typical feed 1`] = `
-"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\">
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><rss xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\" xmlns:content=\\"http://purl.org/rss/1.0/modules/content/\\" xmlns:atom=\\"http://www.w3.org/2005/Atom\\" version=\\"2.0\\" xmlns:itunes=\\"http://www.itunes.com/dtds/podcast-1.0.dtd\\" xmlns:googleplay=\\"http://www.google.com/schemas/play-podcasts/1.0\\">
     <channel>
         <title><![CDATA[podCloud Blog]]></title>
         <description><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
