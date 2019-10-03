@@ -36,6 +36,7 @@ describe("RSS Builder", () => {
     test("without some infos in feed", () => {
       const podcast = Object.assign({}, FeedFixture.default);
       podcast.author = "";
+      podcast.googleplay_block = false;
       podcast.itunes_block = false;
       podcast.itunes_category = "";
       podcast.items.forEach(i => (i.author = ""));

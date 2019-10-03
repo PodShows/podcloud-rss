@@ -50,6 +50,7 @@ export default class podCloudFeedsAPI {
               explicit
               tags
               disabled
+              googleplay_block
               itunes_block
               itunes_category
               feed_redirect_url
