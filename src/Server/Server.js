@@ -10,7 +10,7 @@ import FeedsAPI from "~/podCloud/FeedsAPI";
 import StatsAPI from "~/podCloud/StatsAPI";
 import {
   isObject,
-  notEmpty,
+  empty,
   getFeedIdentifierFromRequest,
   RSSBuilder
 } from "~/Utils";
@@ -24,6 +24,11 @@ const send500 = function(res, content = "An error occured") {
   sendResponse(res, 500, content);
 };
 
+const send302 = function(res, where) {
+  res.writeHead(302, { Location: where });
+  res.end();
+};
+
 const send404 = function(res, content = "Feed not found") {
   sendResponse(res, 404, content);
 };
@@ -32,50 +37,67 @@ const requestHandler = function(feedsAPI, statsAPI) {
   return function(req, res) {
     const identifier = getFeedIdentifierFromRequest(req);
 
-    if (notEmpty(identifier)) {
-      feedsAPI
-        .getFeedWithIdentifier(identifier)
-        .then(podcast => {
-          const rss = RSSBuilder(podcast);
-
-          if (rss == null) {
-            send404(res);
-          } else {
-            res.status(200);
-            res.header("Content-Type", "application/rss+xml; charset=utf-8");
-            if (podcast.disabled === true) {
-              try {
-                const redirect_url = url.parse(podcast.feed_redirect_url);
-                res.status(301);
-                res.header("Location", redirect_url.href);
-                res.send(rss.xml({ indent: true }));
-                res.end();
-              } catch (e) {
-                send404(res);
-              }
-            } else {
-              res.send(rss.xml({ indent: true }));
-              console.log(`Saving view for ${podcast.identifier}...`);
-              statsAPI
-                .saveView(podcast, req)
-                .then(
-                  () => console.log(`View saved for ${podcast.identifier}.`),
-                  () =>
-                    console.error(
-                      `Failed to save view for ${podcast.identifier}!`
-                    )
-                );
-            }
-          }
-        })
-        .catch(error => {
-          console.error(`Error for feed: ${identifier}`);
-          console.error(error);
-          send500(res, error);
-        });
-    } else {
+    if (empty(identifier)) {
       send404(res);
+      return;
     }
+
+    feedsAPI
+      .getFeedWithIdentifier(identifier)
+      .then(podcast => {
+        const cur_url =
+          req.protocol + "://" + req.get("host") + req.originalUrl;
+
+        console.log("current url", cur_url);
+        console.log("feed url", podcast.feed_url);
+        console.log(
+          "redirect ?",
+          cur_url.indexOf(podcast.feed_url),
+          cur_url.indexOf(podcast.feed_url) !== 0
+        );
+
+        if (cur_url.indexOf(podcast.feed_url) !== 0) {
+          send302(res, podcast.feed_url);
+          return;
+        }
+        const rss = RSSBuilder(podcast);
+
+        if (rss == null) {
+          send404(res);
+          return;
+        }
+
+        if (podcast.disabled === true) {
+          try {
+            const redirect_url = url.parse(podcast.feed_redirect_url);
+            res.status(301);
+            res.header("Location", redirect_url.href);
+            res.send(rss.xml({ indent: true }));
+            res.end();
+          } catch (e) {
+            send404(res);
+          }
+          return;
+        }
+
+        res.status(200);
+        res.header("Content-Type", "application/rss+xml; charset=utf-8");
+
+        res.send(rss.xml({ indent: true }));
+        console.log(`Saving view for ${podcast.identifier}...`);
+        statsAPI
+          .saveView(podcast, req)
+          .then(
+            () => console.log(`View saved for ${podcast.identifier}.`),
+            () =>
+              console.error(`Failed to save view for ${podcast.identifier}!`)
+          );
+      })
+      .catch(error => {
+        console.error(`Error for feed: ${identifier}`);
+        console.error(error);
+        send500(res, error);
+      });
   };
 };
 
@@ -90,6 +112,17 @@ class Server {
     this.app.use(compression());
     this[feedsAPI] = new FeedsAPI(apiEndpoint);
     this[statsAPI] = new StatsAPI();
+
+    // use this to let express know it is on a encrypted connection
+    this.app.use(function(req, res, next) {
+      var schema = req.headers["x-forwarded-proto"];
+
+      if (schema === "https") {
+        req.connection.encrypted = true;
+      }
+
+      next();
+    });
 
     this.app.get("*", requestHandler(this[feedsAPI], this[statsAPI]));
   }
