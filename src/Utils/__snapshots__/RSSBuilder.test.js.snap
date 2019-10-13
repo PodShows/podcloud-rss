@@ -12,12 +12,13 @@ N'hésitez pas à commenter les news, on vous répondra!]]></description>
             <title>podCloud Blog</title>
             <link>http://blog.podcloud.fr/</link>
         </image>
-        <generator>podcloud-rss 1.1.5</generator>
+        <generator>podCloud (https://podcloud.fr)</generator>
         <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
         <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
         <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
         <copyright><![CDATA[podCloud]]></copyright>
         <language><![CDATA[fr]]></language>
+        <managingEditor><![CDATA[team+blog@podcloud.fr (podCloud)]]></managingEditor>
         <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
         <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
 N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
@@ -28,7 +29,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
         <itunes:owner>
             <itunes:name><![CDATA[podCloud]]></itunes:name>
-            <itunes:email>team@podcloud.fr</itunes:email>
+            <itunes:email>team+blog@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
         <googleplay:block>no</googleplay:block>
@@ -137,12 +138,13 @@ N'hésitez pas à commenter les news, on vous répondra!]]></description>
             <title>podCloud Blog</title>
             <link>http://blog.podcloud.fr/</link>
         </image>
-        <generator>podcloud-rss 1.1.5</generator>
+        <generator>podCloud (https://podcloud.fr)</generator>
         <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
         <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
         <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
         <copyright><![CDATA[podCloud]]></copyright>
         <language><![CDATA[fr]]></language>
+        <managingEditor><![CDATA[team@podcloud.fr (podCloud)]]></managingEditor>
         <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
         <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
 N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
@@ -176,13 +178,14 @@ N'hésitez pas à commenter les news, on vous répondra!]]></description>
             <title>podCloud Blog</title>
             <link>http://blog.podcloud.fr/</link>
         </image>
-        <generator>podcloud-rss 1.1.5</generator>
+        <generator>podCloud (https://podcloud.fr)</generator>
         <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
         <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
         <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
         <copyright><![CDATA[podCloud]]></copyright>
         <language><![CDATA[fr]]></language>
-        <webMaster><![CDATA[team@podcloud.fr]]></webMaster>
+        <managingEditor><![CDATA[team+blog@podcloud.fr]]></managingEditor>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
         <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
 N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
@@ -191,7 +194,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:author><![CDATA[Anonyme]]></itunes:author>
         <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
         <itunes:owner>
-            <itunes:email>team@podcloud.fr</itunes:email>
+            <itunes:email>team+blog@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>no</itunes:block>
         <googleplay:block>no</googleplay:block>
@@ -295,12 +298,13 @@ N'hésitez pas à commenter les news, on vous répondra!]]></description>
             <title>podCloud Blog</title>
             <link>http://blog.podcloud.fr/</link>
         </image>
-        <generator>podcloud-rss 1.1.5</generator>
+        <generator>podCloud (https://podcloud.fr)</generator>
         <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
         <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
         <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
         <copyright><![CDATA[podCloud]]></copyright>
         <language><![CDATA[fr]]></language>
+        <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
         <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
 N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:subtitle><![CDATA[Blog officiel de podCloud]]></itunes:subtitle>
@@ -410,12 +414,13 @@ N'hésitez pas à commenter les news, on vous répondra!]]></description>
             <title>podCloud Blog</title>
             <link>http://blog.podcloud.fr/</link>
         </image>
-        <generator>podcloud-rss 1.1.5</generator>
+        <generator>podCloud (https://podcloud.fr)</generator>
         <lastBuildDate>Mon, 11 Dec 2017 13:21:30 GMT</lastBuildDate>
         <atom:link href=\\"http://blog.podcloud.fr/rss\\" rel=\\"self\\" type=\\"application/rss+xml\\"/>
         <pubDate>Thu, 23 Nov 2017 10:42:12 GMT</pubDate>
         <copyright><![CDATA[podCloud]]></copyright>
         <language><![CDATA[fr]]></language>
+        <managingEditor><![CDATA[team+blog@podcloud.fr (podCloud)]]></managingEditor>
         <webMaster><![CDATA[team@podcloud.fr (podCloud)]]></webMaster>
         <itunes:summary><![CDATA[Retrouvez ici les actualités et les annonces de l'équipe de podCloud. 
 N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
@@ -426,7 +431,7 @@ N'hésitez pas à commenter les news, on vous répondra!]]></itunes:summary>
         <itunes:image href=\\"http://blog.podcloud.fr/cover.jpg\\"/>
         <itunes:owner>
             <itunes:name><![CDATA[podCloud]]></itunes:name>
-            <itunes:email>team@podcloud.fr</itunes:email>
+            <itunes:email>team+blog@podcloud.fr</itunes:email>
         </itunes:owner>
         <itunes:block>yes</itunes:block>
         <googleplay:block>no</googleplay:block>
