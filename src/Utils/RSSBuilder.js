@@ -18,7 +18,8 @@ export default function RSSBuilder(podcast) {
     language: podcast.language,
     copyright: podcast.copyright,
     pubDate: podcast.updated_at,
-    generator: "podcloud-rss 1.1.5",
+    webMaster: "team@podcloud.fr (podCloud)",
+    generator: "podCloud (https://podcloud.fr)",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
       googleplay: "http://www.google.com/schemas/play-podcasts/1.0"
@@ -44,16 +45,17 @@ export default function RSSBuilder(podcast) {
   };
 
   if (notEmpty(podcast.contact_email)) {
-    let webmaster = podcast.contact_email;
+    let managingEditor = podcast.contact_email;
 
     let itunesOwner = [];
 
     if (notEmpty(podcast.author)) {
-      webmaster += " (" + podcast.author + ")";
+      managingEditor += " (" + podcast.author + ")";
       itunesOwner.push({ "itunes:name": _cdata(podcast.author) });
     }
 
-    rss_feed.webMaster = webmaster;
+    rss_feed.managingEditor = managingEditor;
+
     itunesOwner.push({ "itunes:email": podcast.contact_email });
     rss_feed.custom_elements.push({ "itunes:owner": itunesOwner });
   }
