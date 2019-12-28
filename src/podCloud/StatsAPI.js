@@ -34,7 +34,8 @@ export class podCloudStatsAPI {
         try {
           return clean(
             (request
-              ? request.headers["x-forwarded-for"] ||
+              ? request.headers["cf-connecting-ip"] ||
+                request.headers["x-forwarded-for"] ||
                 request.connection.remoteAddress ||
                 request.socket.remoteAddress ||
                 request.connection.socket.remoteAddress
