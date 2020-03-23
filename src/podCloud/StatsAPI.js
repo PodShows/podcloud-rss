@@ -18,6 +18,10 @@ const diskCache = cacheManager.caching({
   }
 });
 
+import { Crawler } from "es6-crawler-detect/src";
+
+const CrawlerDetector = new Crawler();
+
 export class podCloudStatsAPI {
   constructor() {}
 
@@ -34,7 +38,8 @@ export class podCloudStatsAPI {
         try {
           return clean(
             (request
-              ? request.headers["x-forwarded-for"] ||
+              ? request.headers["cf-connecting-ip"] ||
+                request.headers["x-forwarded-for"] ||
                 request.connection.remoteAddress ||
                 request.socket.remoteAddress ||
                 request.connection.socket.remoteAddress
@@ -51,32 +56,33 @@ export class podCloudStatsAPI {
         return req && req.headers && req.headers[header];
       };
 
+      const user_agent = getHeader(request, "user-agent");
+
+      if (
+        typeof user_agent !== "string" ||
+        user_agent.trim().length < 1 ||
+        CrawlerDetector.isCrawler(user_agent)
+      ) {
+        return reject(`User-Agent is a crawler: ${user_agent}`);
+      }
+
       const payload = {
         fid: clean(podcast._id),
         ip: getIP(request),
-        ua: getHeader(request, "user-agent"),
+        ua: user_agent,
         ref: getHeader(request, "referer")
       };
 
-      PodcastViewAppeal.process(payload).then(resolve, reject);
-
-      diskCache.wrap(
-        `rss-${payload.fid}-${payload.ip}-${payload.ua}`,
-        () => {
-          console.log("Sent to GA");
-          ua("UA-59716320-1")
-            .pageview({
-              dl: podcast.feed_url,
-              ua: payload.ua,
-              uip: payload.ip,
-              dr: payload.ref,
-              dt: podcast.title
-            })
-            .send();
-        },
-        { ttl: 24 * 60 * 60 },
-        err => console.error(err)
-      );
+      diskCache
+        .wrap(
+          `rss-${payload.fid}-${payload.ip}-${payload.ua}`,
+          () => {
+            console.log("Really saving view");
+            return PodcastViewAppeal.process(payload);
+          },
+          { ttl: 24 * 60 * 60 }
+        )
+        .then(resolve, reject);
     });
   }
 }

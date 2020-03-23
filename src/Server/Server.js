@@ -89,8 +89,11 @@ const requestHandler = function(feedsAPI, statsAPI) {
           .saveView(podcast, req)
           .then(
             () => console.log(`View saved for ${podcast.identifier}.`),
-            () =>
-              console.error(`Failed to save view for ${podcast.identifier}!`)
+            err =>
+              console.error(
+                `Failed to save view for ${podcast.identifier}!`,
+                err
+              )
           );
       })
       .catch(error => {
