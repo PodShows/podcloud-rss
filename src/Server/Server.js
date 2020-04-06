@@ -45,6 +45,11 @@ const requestHandler = function(feedsAPI, statsAPI) {
     feedsAPI
       .getFeedWithIdentifier(identifier)
       .then(podcast => {
+        if (podcast == null) {
+          send404(res);
+          return;
+        }
+
         const cur_url =
           req.protocol + "://" + req.get("host") + req.originalUrl;
 
@@ -60,6 +65,7 @@ const requestHandler = function(feedsAPI, statsAPI) {
           send302(res, podcast.feed_url);
           return;
         }
+
         const rss = RSSBuilder(podcast);
 
         if (rss == null) {
