@@ -8,6 +8,7 @@ services:
       - podcloud
     volumes:
       - ./config:/usr/src/app/config
+      - ./cache:/usr/src/app/cache
     restart: always
     labels:
       traefik.enable: true
