@@ -11,10 +11,9 @@ import fsStore from "cache-manager-fs-binary";
 const diskCache = cacheManager.caching({
   store: fsStore,
   options: {
-    path: "diskcache", // path for cached files
+    path: "cache",
     ttl: 24 * 60 * 60, // time to life in seconds
-    maxsize: 1000 * 1000 * 1000 /* max size in bytes on disk */,
-    preventfill: true
+    maxsize: 1000 * 1000 * 1000 /* max size in bytes on disk */
   }
 });
 
