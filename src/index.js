@@ -16,7 +16,6 @@ const feedsAPIURL =
 
 Mongo.connect(config.get("mongodb")).then(() => {
   const server = new Server(config.get("listen"), feedsAPIURL);
-  removeOldCache();
   server.start();
 }, console.error);
 
