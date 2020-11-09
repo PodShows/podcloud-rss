@@ -22,7 +22,8 @@ export default function RSSBuilder(podcast) {
     generator: "podCloud (https://podcloud.fr)",
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
-      googleplay: "http://www.google.com/schemas/play-podcasts/1.0"
+      googleplay: "http://www.google.com/schemas/play-podcasts/1.0",
+      podcast: "https://podcast-ext.org"
     },
     custom_elements: [
       {
@@ -61,11 +62,19 @@ export default function RSSBuilder(podcast) {
   }
 
   rss_feed.custom_elements.push({
-    "itunes:block": podcast.itunes_block ? "yes" : "no"
+    "itunes:block": podcast.itunes_block ? "yes" : "no",
+    "podcast:block": [
+      { _attr: { platform: "itunes" } },
+      podcast.itunes_block ? "yes" : "no"
+    ]
   });
 
   rss_feed.custom_elements.push({
-    "googleplay:block": podcast.googleplay_block ? "yes" : "no"
+    "googleplay:block": podcast.googleplay_block ? "yes" : "no",
+    "podcast:block": [
+      { _attr: { platform: "google_podcasts" } },
+      podcast.googleplay_block ? "yes" : "no"
+    ]
   });
 
   rss_feed.custom_elements.push({
@@ -79,6 +88,187 @@ export default function RSSBuilder(podcast) {
   if (podcast.disabled) {
     rss_feed.custom_elements.push({
       "itunes:new-feed-url": podcast.feed_redirect_url
+    });
+  }
+
+  podcast.platforms = podcast.platforms || {};
+  podcast.socials = podcast.socials || {};
+
+  if (notEmpty(podcast.platforms.apple)) {
+    rss_feed.custom_elements.push({
+      "podcast:platform": {
+        _attr: {
+          platform: "apple_podcasts",
+          href: `https://podcast.apple.com/${podcast.platforms.apple}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.platforms.google)) {
+    rss_feed.custom_elements.push({
+      "podcast:platform": {
+        _attr: {
+          platform: "google_podcasts",
+          href: podcast.platforms.google
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.platforms.spotify)) {
+    rss_feed.custom_elements.push({
+      "podcast:platform": {
+        _attr: {
+          platform: "spotify",
+          href: `https://open.spotify.com/show/${podcast.platforms.spotify}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.platforms.deezer)) {
+    rss_feed.custom_elements.push({
+      "podcast:platform": {
+        _attr: {
+          platform: "deezer",
+          href: `https://deezer.com/${podcast.platforms.deezer}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.platforms.podcloud)) {
+    rss_feed.custom_elements.push({
+      "podcast:platform": {
+        _attr: {
+          platform: "podcloud",
+          href: `https://podcloud.fr/podcast/${podcast.platforms.deezer}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.youtube)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "youtube",
+          href: `https://youtube.com/${podcast.socials.youtube}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.soundcloud)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "soundcloud",
+          handle: podcast.socials.soundcloud,
+          href: `https://soundcloud.com/${podcast.socials.soundcloud}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.twitch)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "twitch",
+          handle: podcast.socials.twitch,
+          href: `https://twitch.tv/${podcast.socials.twitch}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.dailymotion)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "dailymotion",
+          href: `https://dailymotion.com/${podcast.socials.dailymotion}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.twitter)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "twitter",
+          handle: podcast.socials.twitter,
+          href: `https://twitter.com/${podcast.socials.twitter}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.facebook)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "facebook",
+          href: `https://facebook.com/${podcast.socials.facebook}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.socials.instagram)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "instagram",
+          handle: podcast.socials.instagram,
+          href: `https://instagram.com/${podcast.socials.instagram}`
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.wiki_url)) {
+    rss_feed.custom_elements.push({
+      "podcast:link": [
+        {
+          _attr: {
+            href: podcast.wiki_url
+          }
+        },
+        "Wiki"
+      ]
+    });
+  }
+
+  if (notEmpty(podcast.shop_url)) {
+    rss_feed.custom_elements.push({
+      "podcast:shop": {
+        _attr: {
+          href: podcast.shop_url
+        }
+      }
+    });
+  }
+
+  if (notEmpty(podcast.donate_url)) {
+    rss_feed.custom_elements.push({
+      "podcast:donate": {
+        _attr: {
+          href: podcast.donate_url
+        }
+      }
+    });
+
+    rss_feed.custom_elements.push({
+      link: {
+        _attr: {
+          rel: "payment",
+          href: podcast.donate_url
+        }
+      }
     });
   }
 
