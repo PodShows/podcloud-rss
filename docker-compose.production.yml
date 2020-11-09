@@ -9,6 +9,7 @@ services:
     volumes:
       - ./config:/usr/src/app/config
       - ./cache:/usr/src/app/cache
+      - ./feed_cache:/usr/src/app/feed_cache
     restart: always
     labels:
       traefik.enable: true
