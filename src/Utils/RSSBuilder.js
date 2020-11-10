@@ -99,7 +99,7 @@ export default function RSSBuilder(podcast) {
       "podcast:platform": {
         _attr: {
           platform: "apple_podcasts",
-          href: `https://podcast.apple.com/${podcast.platforms.apple}`
+          href: `https://podcasts.apple.com/${podcast.platforms.apple}`
         }
       }
     });
@@ -143,7 +143,7 @@ export default function RSSBuilder(podcast) {
       "podcast:platform": {
         _attr: {
           platform: "podcloud",
-          href: `https://podcloud.fr/podcast/${podcast.platforms.deezer}`
+          href: `https://podcloud.fr/podcast/${podcast.platforms.podcloud}`
         }
       }
     });
