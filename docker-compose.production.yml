@@ -17,7 +17,7 @@ services:
 
   rss-feed-cache:
     image: redis
-    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy lfu"]
+    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy allkeys-lfu"]
     restart: always
     networks:
       - traefik
@@ -26,7 +26,7 @@ services:
 
   rss-ping-cache:
     image: redis
-    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy lru"]
+    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy allkeys-lru"]
     restart: always
     networks:
       - traefik
