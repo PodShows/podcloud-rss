@@ -40,12 +40,12 @@ export default class podCloudFeedsAPI {
     /* istanbul ignore next */
     client = defaultClient
   ) {
-    console.log("Asking cache");
+    console.log(`Asking cache for ${identifier}`);
     return cache
       .wrap(
         `feed-data-${identifier}`,
         () => {
-          console.log("Creating cache");
+          console.log(`Creating cache for ${identifier}`);
           return client.query({
             query: gql`
               query getFeed($identifier: String!) {
@@ -128,7 +128,7 @@ export default class podCloudFeedsAPI {
         { ttl: 2 * 60 }
       )
       .then(resp => {
-        console.log("Got response from cache");
+        console.log(`Got response from cache for ${identifier}`);
         if (
           typeof resp === "object" &&
           typeof resp.data === "object" &&
