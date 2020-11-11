@@ -76,7 +76,9 @@ export class podCloudStatsAPI {
         per_user_ping = parseInt(per_user_ping) || 0;
 
         if (per_user_ping >= 50)
-          return reject("Too many call from IP/UA in the last 60 minutes");
+          return reject(
+            `Too many call from IP/UA in the last 60 minutes : \n ${payload.ua}`
+          );
 
         cache.set(user_cache_key, per_user_ping + 1, { ttl: 24 * 60 * 60 });
 
@@ -87,7 +89,9 @@ export class podCloudStatsAPI {
           per_feed_ping = parseInt(per_feed_ping) || 0;
           if (per_feed_ping > 0) {
             return reject(
-              "Too many call from IP/UA for this feed in the last 24 hours"
+              `Too many call from IP/UA for this feed in the last 24 hours : \n ${
+                payload.ua
+              }`
             );
           }
 
