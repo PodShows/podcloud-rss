@@ -27,7 +27,8 @@ const diskCache = cacheManager.caching({
     path: "feed_cache",
     ttl: 2 * 60, // time to life in seconds
     maxsize: 1000 * 1000 * 1000, // max size in bytes on disk
-    preventfill: true
+    preventfill: true,
+    zip: true
   }
 });
 
