@@ -54,11 +54,13 @@ export class podCloudStatsAPI {
 
       const user_agent = getHeader(request, "user-agent");
 
-      if (
-        typeof user_agent !== "string" ||
-        user_agent.trim().length < 1 ||
-        CrawlerDetector.isCrawler(user_agent)
-      ) {
+      let isCrawler = typeof user_agent !== "string";
+      isCrawler = isCrawler || user_agent.trim().length < 1;
+      isCrawler = isCrawler || user_agent.includes("TPA/");
+      isCrawler = isCrawler || user_agent.includes("Spotify/");
+      isCrawler = isCrawler || CrawlerDetector.isCrawler(user_agent);
+
+      if (isCrawler) {
         return reject(`User-Agent is a crawler: ${user_agent}`);
       }
 
