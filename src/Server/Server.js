@@ -42,10 +42,13 @@ const requestHandler = function(feedsAPI, statsAPI) {
       return;
     }
 
+    console.log("Requesting feedsAPI");
+
     feedsAPI
       .getFeedWithIdentifier(identifier)
       .then(podcast => {
         if (podcast == null) {
+          console.log("No answer, 404");
           send404(res);
           return;
         }
@@ -62,10 +65,12 @@ const requestHandler = function(feedsAPI, statsAPI) {
         );
 
         if (cur_url.indexOf(podcast.feed_url) !== 0) {
+          console.log("Redirecting...", podcast.feed_url);
           send302(res, podcast.feed_url);
           return;
         }
 
+        console.log("Building RSS");
         const rss = RSSBuilder(podcast);
 
         if (rss == null) {

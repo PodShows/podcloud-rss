@@ -17,6 +17,17 @@ class GraphQLSimpleHttpClient {
   }
 }
 
+import cacheManager from "cache-manager";
+
+import redisStore from "cache-manager-redis";
+
+const cache = cacheManager.caching({
+  store: redisStore,
+  host: "rss-feed-cache",
+  ttl: 2 * 60, // time to life in seconds
+  compress: true
+});
+
 let defaultClient;
 export default class podCloudFeedsAPI {
   constructor(endpoint_url) {
@@ -29,86 +40,95 @@ export default class podCloudFeedsAPI {
     /* istanbul ignore next */
     client = defaultClient
   ) {
-    return client
-      .query({
-        query: gql`
-          query getFeed($identifier: String!) {
-            podcastForFeedWithIdentifier(identifier: $identifier) {
-              _id
-              identifier
-              title
-              description
-              catchline
-              feed_url
-              cover {
-                url
-              }
-              website_url
-              language
-              contact_email
-              author
-              explicit
-              tags
-              disabled
-              googleplay_block
-              itunes_block
-              itunes_category
-              feed_redirect_url
-              copyright
-              ordering
-              updated_at
-              platforms {
-                apple
-                google
-                spotify
-                deezer
-                podcloud
-              }
-              socials {
-                youtube
-                soundcloud
-                dailymotion
-                twitch
-                twitter
-                facebook
-                instagram
-              }
-              wiki_url
-              shop_url
-              donate_url
-              items {
-                title
-                author
-                guid
-                text_content
-                formatted_content
-                published_at
-                url
-                explicit
-                episode_type
-                season
-                episode
-                ... on Episode {
-                  enclosure {
-                    cover {
-                      url
-                    }
+    console.log("Asking cache");
+    return cache
+      .wrap(
+        `feed-data-${identifier}`,
+        () => {
+          console.log("Creating cache");
+          return client.query({
+            query: gql`
+              query getFeed($identifier: String!) {
+                podcastForFeedWithIdentifier(identifier: $identifier) {
+                  _id
+                  identifier
+                  title
+                  description
+                  catchline
+                  feed_url
+                  cover {
                     url
-                    type
-                    size
-                    duration
+                  }
+                  website_url
+                  language
+                  contact_email
+                  author
+                  explicit
+                  tags
+                  disabled
+                  googleplay_block
+                  itunes_block
+                  itunes_category
+                  feed_redirect_url
+                  copyright
+                  ordering
+                  updated_at
+                  platforms {
+                    apple
+                    google
+                    spotify
+                    deezer
+                    podcloud
+                  }
+                  socials {
+                    youtube
+                    soundcloud
+                    dailymotion
+                    twitch
+                    twitter
+                    facebook
+                    instagram
+                  }
+                  wiki_url
+                  shop_url
+                  donate_url
+                  items {
+                    title
+                    author
+                    guid
+                    text_content
+                    formatted_content
+                    published_at
+                    url
+                    explicit
+                    episode_type
+                    season
+                    episode
+                    ... on Episode {
+                      enclosure {
+                        cover {
+                          url
+                        }
+                        url
+                        type
+                        size
+                        duration
+                      }
+                    }
                   }
                 }
               }
-            }
-          }
-        `,
-        variables: {
-          identifier
+            `,
+            variables: {
+              identifier
+            },
+            operationName: "getFeed"
+          });
         },
-        operationName: "getFeed"
-      })
+        { ttl: 2 * 60 }
+      )
       .then(resp => {
+        console.log("Got response from cache");
         if (
           typeof resp === "object" &&
           typeof resp.data === "object" &&

@@ -8,14 +8,30 @@ services:
       - podcloud
     volumes:
       - ./config:/usr/src/app/config
-      - ./cache:/usr/src/app/cache
-      - ./feed_cache:/usr/src/app/feed_cache
     restart: always
     labels:
       traefik.enable: true
       traefik.backend: "podcloud-rss"
       traefik.frontend.rule: "HostRegexp:{subdomain:.*}{host:podcloud|lepodcast}.fr;Path:/rss"
       traefik.frontend.priority: 900
+
+  rss-feed-cache:
+    image: redis
+    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy lfu"]
+    restart: always
+    networks:
+      - traefik
+      - podcloud
+      - default
+
+  rss-ping-cache:
+    image: redis
+    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy lru"]
+    restart: always
+    networks:
+      - traefik
+      - podcloud
+      - default
 
 networks:
   podcloud:
