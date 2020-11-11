@@ -42,13 +42,13 @@ const requestHandler = function(feedsAPI, statsAPI) {
       return;
     }
 
-    console.log("Requesting feedsAPI");
+    console.log(`Requesting feedsAPI for ${identifier}`);
 
     feedsAPI
       .getFeedWithIdentifier(identifier)
       .then(podcast => {
         if (podcast == null) {
-          console.log("No answer, 404");
+          console.log(`No answer, 404 for ${identifier}`);
           send404(res);
           return;
         }
@@ -56,21 +56,21 @@ const requestHandler = function(feedsAPI, statsAPI) {
         const cur_url =
           req.protocol + "://" + req.get("host") + req.originalUrl;
 
-        console.log("current url", cur_url);
-        console.log("feed url", podcast.feed_url);
+        console.log(identifier, "current url", cur_url);
+        console.log(identifier, "feed url", podcast.feed_url);
         console.log(
-          "redirect ?",
+          identifier, "redirect ?",
           cur_url.indexOf(podcast.feed_url),
           cur_url.indexOf(podcast.feed_url) !== 0
         );
 
         if (cur_url.indexOf(podcast.feed_url) !== 0) {
-          console.log("Redirecting...", podcast.feed_url);
+          console.log(identifier, "Redirecting...", podcast.feed_url);
           send302(res, podcast.feed_url);
           return;
         }
 
-        console.log("Building RSS");
+        console.log(`Building RSS for ${identifier}`);
         const rss = RSSBuilder(podcast);
 
         if (rss == null) {

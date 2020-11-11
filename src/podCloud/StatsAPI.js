@@ -89,7 +89,9 @@ export class podCloudStatsAPI {
             );
           }
 
-          console.log("Really saving view");
+          console.log(
+            `Really saving view for ${podcast.identifier} : \n ${payload.ua}`
+          );
 
           PodcastViewAppeal.process(payload).then(() => {
             cache.set(feed_cache_key, 1, { ttl: 60 * 60 }, err => {
