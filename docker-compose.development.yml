@@ -19,6 +19,22 @@ services:
       traefik.frontend.rule: "HostRegexp:{subdomain:.*}{host:podcloud|lepodcast}.test;Path:/rss"
       traefik.frontend.priority: 900
 
+  rss-feed-cache:
+    image: redis
+    command: ["redis-server", "--maxmemory 1gb", "--maxmemory-policy allkeys-lfu"]
+    networks:
+      - traefik
+      - podcloud
+      - default
+
+  rss-ping-cache:
+    image: redis
+    command: ["redis-server", "--maxmemory 1gb", "--maxmemory-policy allkeys-lru"]
+    networks:
+      - traefik
+      - podcloud
+      - default
+
 networks:
   podcloud:
     external: true
