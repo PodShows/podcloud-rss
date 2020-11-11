@@ -54,16 +54,6 @@ export class podCloudStatsAPI {
 
       const user_agent = getHeader(request, "user-agent");
 
-      let isCrawler = typeof user_agent !== "string";
-      isCrawler = isCrawler || user_agent.trim().length < 1;
-      isCrawler = isCrawler || user_agent.includes("TPA/");
-      isCrawler = isCrawler || user_agent.includes("Spotify/");
-      isCrawler = isCrawler || CrawlerDetector.isCrawler(user_agent);
-
-      if (isCrawler) {
-        return reject(`User-Agent is a crawler: ${user_agent}`);
-      }
-
       const payload = {
         fid: clean(podcast._id),
         ip: getIP(request),
@@ -71,13 +61,45 @@ export class podCloudStatsAPI {
         ref: getHeader(request, "referer")
       };
 
+      let isCrawler = typeof user_agent !== "string";
+      isCrawler = isCrawler || user_agent.trim().length < 1;
+
+      [
+        "TPA/",
+        "Spotify/",
+        "Deezer Podcasters/",
+        "Luminary/",
+        "podCloud/",
+        "Podchaser-Parser",
+        "rss-parser",
+        "NextCloud-News/",
+        "PocketCasts/1.0 (Pocket Casts Feed Parser;",
+        "iVoox Global Podcasting Service",
+        "fyyd-poll-1/",
+        "iTMS",
+        "Tentacles, Like iTunes",
+        "Podinstall"
+      ].forEach(ua => {
+        isCrawler = isCrawler || user_agent.indexOf(ua) === 0;
+      });
+
+      isCrawler = isCrawler || CrawlerDetector.isCrawler(user_agent);
+
+      if (isCrawler) {
+        return reject(
+          `User-Agent is a crawler: ${user_agent} ( IP : ${payload.ip} )`
+        );
+      }
+
       const user_cache_key = `user-` + sha256([payload.ip, payload.ua]);
       cache.get(user_cache_key, (err, per_user_ping) => {
         per_user_ping = parseInt(per_user_ping) || 0;
 
         if (per_user_ping >= 50)
           return reject(
-            `Too many call from IP/UA in the last 60 minutes : \n ${payload.ua}`
+            `Too many call from IP/UA in the last 60 minutes (IP: ${
+              payload.ip
+            }) : \n ${payload.ua}`
           );
 
         cache.set(user_cache_key, per_user_ping + 1, { ttl: 24 * 60 * 60 });
@@ -89,9 +111,9 @@ export class podCloudStatsAPI {
           per_feed_ping = parseInt(per_feed_ping) || 0;
           if (per_feed_ping > 0) {
             return reject(
-              `Too many call from IP/UA for this feed in the last 24 hours : \n ${
-                payload.ua
-              }`
+              `Too many call from IP/UA for this feed in the last 24 hours ${
+                payload.ip
+              } : \n ${payload.ua}`
             );
           }
 
