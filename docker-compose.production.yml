@@ -5,6 +5,7 @@ services:
     image: podshows/podcloud-rss:latest
     networks:
       - traefik
+      - default
       - podcloud
     volumes:
       - ./config:/usr/src/app/config
@@ -20,8 +21,6 @@ services:
     command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy allkeys-lfu"]
     restart: always
     networks:
-      - traefik
-      - podcloud
       - default
 
   rss-ping-cache:
@@ -29,8 +28,6 @@ services:
     command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy allkeys-lru"]
     restart: always
     networks:
-      - traefik
-      - podcloud
       - default
 
 networks:

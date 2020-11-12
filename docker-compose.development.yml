@@ -11,6 +11,7 @@ services:
       - ~/.docker/traefik/ca/cert.pem:/ca.crt
     networks:
       - traefik
+      - default
       - podcloud
     environment:
         NODE_EXTRA_CA_CERTS: /ca.crt
@@ -23,16 +24,12 @@ services:
     image: redis
     command: ["redis-server", "--maxmemory 1gb", "--maxmemory-policy allkeys-lfu"]
     networks:
-      - traefik
-      - podcloud
       - default
 
   rss-ping-cache:
     image: redis
     command: ["redis-server", "--maxmemory 1gb", "--maxmemory-policy allkeys-lru"]
     networks:
-      - traefik
-      - podcloud
       - default
 
 networks:
