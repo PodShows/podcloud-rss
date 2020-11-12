@@ -16,6 +16,8 @@ const cache = cacheManager.caching({
 
 import { Crawler } from "es6-crawler-detect/src";
 
+import fs from "fs";
+
 const CrawlerDetector = new Crawler();
 
 export class podCloudStatsAPI {
@@ -62,6 +64,17 @@ export class podCloudStatsAPI {
       };
 
       let isCrawler = typeof user_agent !== "string";
+
+      if (`${user_agent}`.indexOf("Spotify/") === 0) {
+        isCrawler = true;
+        fs.writeFile(
+          `config/spotify/${podcast.identifier}.txt`,
+          `${new Date().toISOString()}\n`,
+          { flag: "a", encoding: "utf8" },
+          console.log
+        );
+      }
+
       isCrawler = isCrawler || user_agent.trim().length < 1;
 
       [
@@ -78,10 +91,16 @@ export class podCloudStatsAPI {
         "fyyd-poll-1/",
         "iTMS",
         "Tentacles, Like iTunes",
-        "Podinstall"
+        "Podinstall",
+        "Overcast/1.0 Podcast Sync",
+        "Mozilla/5.0 +https://podmust.com",
+        "Mozilla/5.0 (compatible; INA dlweb"
       ].forEach(ua => {
         isCrawler = isCrawler || user_agent.indexOf(ua) === 0;
       });
+
+      isCrawler = isCrawler || payload.ip === "5.39.90.104";
+      isCrawler = isCrawler || payload.ip.indexOf("194.127.248") === 0;
 
       isCrawler = isCrawler || CrawlerDetector.isCrawler(user_agent);
 
