@@ -1,6 +1,6 @@
 {
   "name": "podcloud-rss",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Generating rss feeds from graphQL for podCloud",
   "scripts": {
     "start": "env nodemon ./server.js --exec babel-node",
@@ -24,7 +24,6 @@
     "config": "^1.28.1",
     "es6-crawler-detect": "^3.0.1",
     "express": "4.13.4",
-    "find-remove": "^2.0.1",
     "graphql": "^0.11.4",
     "graphql-tag": "^2.4.2",
     "graphql-tools": "^1.2.3",
