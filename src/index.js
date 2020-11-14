@@ -17,5 +17,3 @@ Mongo.connect(config.get("mongodb")).then(() => {
   const server = new Server(config.get("listen"), feedsAPIURL);
   server.start();
 }, console.error);
-
-fs.mkdir("config/spotify", console.log);
