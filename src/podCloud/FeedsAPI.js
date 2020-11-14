@@ -49,7 +49,7 @@ export default class podCloudFeedsAPI {
           return client.query({
             query: gql`
               query getFeed($identifier: String!) {
-                podcastForFeedWithIdentifier(identifier: $identifier) {
+                podcast(identifier: $identifier) {
                   _id
                   identifier
                   title
@@ -132,10 +132,10 @@ export default class podCloudFeedsAPI {
         if (
           typeof resp === "object" &&
           typeof resp.data === "object" &&
-          typeof resp.data.podcastForFeedWithIdentifier === "object" &&
+          typeof resp.data.podcast === "object" &&
           typeof resp.errors !== "object"
         ) {
-          return Promise.resolve(resp.data.podcastForFeedWithIdentifier);
+          return Promise.resolve(resp.data.podcast);
         }
 
         return Promise.reject(resp);

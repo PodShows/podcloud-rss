@@ -65,16 +65,6 @@ export class podCloudStatsAPI {
 
       let isCrawler = typeof user_agent !== "string";
 
-      if (`${user_agent}`.indexOf("Spotify/") === 0) {
-        isCrawler = true;
-        fs.writeFile(
-          `config/spotify/${podcast.identifier}.txt`,
-          `${new Date().toISOString()}\n`,
-          { flag: "a", encoding: "utf8" },
-          console.log
-        );
-      }
-
       isCrawler = isCrawler || user_agent.trim().length < 1;
 
       [
