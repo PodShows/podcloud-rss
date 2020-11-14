@@ -22,7 +22,7 @@ describe("FeedsAPI", () => {
   test("to resolve promise correctly", () => {
     const mockedClient = mockClient(resolve =>
       resolve({
-        data: { podcastForFeedWithIdentifier: { content: "content" } }
+        data: { podcast: { content: "content" } }
       })
     );
     expect(
