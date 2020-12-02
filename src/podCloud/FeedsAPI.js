@@ -88,6 +88,7 @@ export default class podCloudFeedsAPI {
                     twitter
                     facebook
                     instagram
+                    discord
                   }
                   wiki_url
                   shop_url

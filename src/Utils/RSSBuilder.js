@@ -230,6 +230,17 @@ export default function RSSBuilder(podcast) {
     });
   }
 
+  if (notEmpty(podcast.socials.discord)) {
+    rss_feed.custom_elements.push({
+      "podcast:social": {
+        _attr: {
+          platform: "discord",
+          href: podcast.socials.discord
+        }
+      }
+    });
+  }
+
   if (notEmpty(podcast.wiki_url)) {
     rss_feed.custom_elements.push({
       "podcast:link": [
