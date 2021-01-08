@@ -84,7 +84,8 @@ export class podCloudStatsAPI {
         "Podinstall",
         "Overcast/1.0 Podcast Sync",
         "Mozilla/5.0 +https://podmust.com",
-        "Mozilla/5.0 (compatible; INA dlweb"
+        "Mozilla/5.0 (compatible; INA dlweb",
+        "Trackable/"
       ].forEach(ua => {
         isCrawler = isCrawler || user_agent.indexOf(ua) === 0;
       });
@@ -111,7 +112,7 @@ export class podCloudStatsAPI {
             }) : \n ${payload.ua}`
           );
 
-        cache.set(user_cache_key, per_user_ping + 1, { ttl: 24 * 60 * 60 });
+        cache.set(user_cache_key, per_user_ping + 1, { ttl: 60 * 60 });
 
         const feed_cache_key =
           `feed-` + sha256([payload.fid, payload.ip, payload.ua]);
@@ -131,7 +132,7 @@ export class podCloudStatsAPI {
           );
 
           PodcastViewAppeal.process(payload).then(() => {
-            cache.set(feed_cache_key, 1, { ttl: 60 * 60 }, err => {
+            cache.set(feed_cache_key, 1, { ttl: 24 * 60 * 60 }, err => {
               resolve();
             });
           }, reject);
