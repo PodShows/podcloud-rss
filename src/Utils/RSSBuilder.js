@@ -23,7 +23,7 @@ export default function RSSBuilder(podcast) {
     custom_namespaces: {
       itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
       googleplay: "http://www.google.com/schemas/play-podcasts/1.0",
-      podcast: "https://podcast-ext.org"
+      podext: "https://podcast-ext.org"
     },
     custom_elements: [
       {
@@ -63,7 +63,7 @@ export default function RSSBuilder(podcast) {
 
   rss_feed.custom_elements.push({
     "itunes:block": podcast.itunes_block ? "yes" : "no",
-    "podcast:block": [
+    "podext:block": [
       { _attr: { platform: "itunes" } },
       podcast.itunes_block ? "yes" : "no"
     ]
@@ -71,7 +71,7 @@ export default function RSSBuilder(podcast) {
 
   rss_feed.custom_elements.push({
     "googleplay:block": podcast.googleplay_block ? "yes" : "no",
-    "podcast:block": [
+    "podext:block": [
       { _attr: { platform: "google_podcasts" } },
       podcast.googleplay_block ? "yes" : "no"
     ]
@@ -96,7 +96,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.platforms.apple)) {
     rss_feed.custom_elements.push({
-      "podcast:platform": {
+      "podext:platform": {
         _attr: {
           platform: "apple_podcasts",
           href: `https://podcasts.apple.com/${podcast.platforms.apple}`
@@ -107,7 +107,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.platforms.google)) {
     rss_feed.custom_elements.push({
-      "podcast:platform": {
+      "podext:platform": {
         _attr: {
           platform: "google_podcasts",
           href: podcast.platforms.google
@@ -118,7 +118,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.platforms.spotify)) {
     rss_feed.custom_elements.push({
-      "podcast:platform": {
+      "podext:platform": {
         _attr: {
           platform: "spotify",
           href: `https://open.spotify.com/show/${podcast.platforms.spotify}`
@@ -129,7 +129,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.platforms.deezer)) {
     rss_feed.custom_elements.push({
-      "podcast:platform": {
+      "podext:platform": {
         _attr: {
           platform: "deezer",
           href: `https://deezer.com/${podcast.platforms.deezer}`
@@ -140,7 +140,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.platforms.podcloud)) {
     rss_feed.custom_elements.push({
-      "podcast:platform": {
+      "podext:platform": {
         _attr: {
           platform: "podcloud",
           href: `https://podcloud.fr/podcast/${podcast.platforms.podcloud}`
@@ -151,7 +151,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.youtube)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "youtube",
           href: `https://youtube.com/${podcast.socials.youtube}`
@@ -162,7 +162,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.soundcloud)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "soundcloud",
           handle: podcast.socials.soundcloud,
@@ -174,7 +174,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.twitch)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "twitch",
           handle: podcast.socials.twitch,
@@ -186,7 +186,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.dailymotion)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "dailymotion",
           href: `https://dailymotion.com/${podcast.socials.dailymotion}`
@@ -197,7 +197,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.twitter)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "twitter",
           handle: podcast.socials.twitter,
@@ -209,7 +209,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.facebook)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "facebook",
           href: `https://facebook.com/${podcast.socials.facebook}`
@@ -220,7 +220,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.instagram)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "instagram",
           handle: podcast.socials.instagram,
@@ -232,7 +232,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.socials.discord)) {
     rss_feed.custom_elements.push({
-      "podcast:social": {
+      "podext:social": {
         _attr: {
           platform: "discord",
           href: podcast.socials.discord
@@ -243,7 +243,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.wiki_url)) {
     rss_feed.custom_elements.push({
-      "podcast:link": [
+      "podext:link": [
         {
           _attr: {
             href: podcast.wiki_url
@@ -256,7 +256,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.shop_url)) {
     rss_feed.custom_elements.push({
-      "podcast:shop": {
+      "podext:shop": {
         _attr: {
           href: podcast.shop_url
         }
@@ -266,7 +266,7 @@ export default function RSSBuilder(podcast) {
 
   if (notEmpty(podcast.donate_url)) {
     rss_feed.custom_elements.push({
-      "podcast:donate": {
+      "podext:donate": {
         _attr: {
           href: podcast.donate_url
         }
