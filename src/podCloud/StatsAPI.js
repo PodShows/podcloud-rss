@@ -85,7 +85,13 @@ export class podCloudStatsAPI {
         "Overcast/1.0 Podcast Sync",
         "Mozilla/5.0 +https://podmust.com",
         "Mozilla/5.0 (compatible; INA dlweb",
-        "Trackable/"
+        "Trackable/",
+        "Podcastindex.org/v0.3.3",
+        "PlayerFM/1.0 Podcast Sync",
+        "Rephonic/1.0",
+        "ListenNotes/3.0",
+        "RSSRadio (Push Notification Scanner",
+        "Zapier"
       ].forEach(ua => {
         isCrawler = isCrawler || user_agent.indexOf(ua) === 0;
       });
