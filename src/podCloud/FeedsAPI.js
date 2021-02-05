@@ -110,7 +110,7 @@ export default class podCloudFeedsAPI {
                         cover {
                           url
                         }
-                        url
+                        url(purpose: "f")
                         type
                         size
                         duration
