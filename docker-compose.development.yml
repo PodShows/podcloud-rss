@@ -16,6 +16,8 @@ services:
     environment:
         NODE_EXTRA_CA_CERTS: /ca.crt
         NODE_TLS_REJECT_UNAUTHORIZED: 0
+    extra_hosts:
+      - "dave:192.168.10.40"
     labels:
       traefik.frontend.rule: "HostRegexp:{subdomain:.*}{host:podcloud|lepodcast}.test;Path:/rss"
       traefik.frontend.priority: 900
