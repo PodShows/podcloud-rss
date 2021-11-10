@@ -34,7 +34,7 @@ export default function RSSBuilder(podcast) {
       },
       { "itunes:explicit": podcast.explicit ? "yes" : "no" },
       {
-        "itunes:keywords": _cdata(podcast.tags.concat(["podCloud"]).join(", "))
+        "itunes:keywords": _cdata(podcast.tags).join(", ")
       },
       {
         "itunes:author": _cdata(
