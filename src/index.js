@@ -1,6 +1,5 @@
 import Server from "~/Server";
 import config from "config";
-import { Mongo } from "podcloud-stats";
 
 import path from "path";
 import fs from "fs";
@@ -13,7 +12,5 @@ const feedsAPIURL =
       "/graphql") ||
   null;
 
-Mongo.connect(config.get("mongodb")).then(() => {
-  const server = new Server(config.get("listen"), feedsAPIURL);
-  server.start();
-}, console.error);
+const server = new Server(config.get("listen"), feedsAPIURL);
+server.start();

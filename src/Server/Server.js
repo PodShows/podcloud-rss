@@ -7,7 +7,7 @@ import express from "express";
 import compression from "compression";
 
 import FeedsAPI from "~/podCloud/FeedsAPI";
-import StatsAPI from "~/podCloud/StatsAPI";
+
 import {
   isObject,
   empty,
@@ -33,9 +33,12 @@ const send404 = function(res, content = "Feed not found") {
   sendResponse(res, 404, content);
 };
 
-const requestHandler = function(feedsAPI, statsAPI) {
+const requestHandler = function(feedsAPI) {
   return function(req, res) {
+    console.log(`${req.method} ${req.url}`);
     const identifier = getFeedIdentifierFromRequest(req);
+
+    console.log(`Identifier: ${identifier}`);
 
     if (empty(identifier)) {
       send404(res);
@@ -59,7 +62,8 @@ const requestHandler = function(feedsAPI, statsAPI) {
         console.log(identifier, "current url", cur_url);
         console.log(identifier, "feed url", podcast.feed_url);
         console.log(
-          identifier, "redirect ?",
+          identifier,
+          "redirect ?",
           cur_url.indexOf(podcast.feed_url),
           cur_url.indexOf(podcast.feed_url) !== 0
         );
@@ -95,17 +99,6 @@ const requestHandler = function(feedsAPI, statsAPI) {
         res.header("Content-Type", "application/rss+xml; charset=utf-8");
 
         res.send(rss.xml({ indent: true }));
-        console.log(`Saving view for ${podcast.identifier}...`);
-        statsAPI
-          .saveView(podcast, req)
-          .then(
-            () => console.log(`View saved for ${podcast.identifier}.`),
-            err =>
-              console.error(
-                `Failed to save view for ${podcast.identifier}!`,
-                err
-              )
-          );
       })
       .catch(error => {
         console.error(`Error for feed: ${identifier}`);
@@ -116,16 +109,14 @@ const requestHandler = function(feedsAPI, statsAPI) {
 };
 
 var feedsAPI = Symbol.for("Server.feedsAPI");
-var statsAPI = Symbol.for("Server.statsAPI");
 
 class Server {
-  constructor(listen, apiEndpoint, statsPrivateKey, statsBin) {
+  constructor(listen, apiEndpoint) {
     this.listen = listen;
     this.apiEndpoint = apiEndpoint;
     this.app = express();
     this.app.use(compression());
     this[feedsAPI] = new FeedsAPI(apiEndpoint);
-    this[statsAPI] = new StatsAPI();
 
     // use this to let express know it is on a encrypted connection
     this.app.use(function(req, res, next) {
@@ -138,7 +129,7 @@ class Server {
       next();
     });
 
-    this.app.get("*", requestHandler(this[feedsAPI], this[statsAPI]));
+    this.app.get("*", requestHandler(this[feedsAPI]));
   }
 
   start() {

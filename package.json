@@ -1,6 +1,6 @@
 {
   "name": "podcloud-rss",
-  "version": "1.6.9",
+  "version": "1.6.10",
   "description": "Generating rss feeds from graphQL for podCloud",
   "scripts": {
     "start": "env nodemon ./server.js --exec babel-node",
@@ -29,7 +29,6 @@
     "graphql-tools": "^1.2.3",
     "isomorphic-fetch": "^2.2.1",
     "node-cache": "^4.1.1",
-    "podcloud-stats": "github:PodShows/podcloud-stats",
     "request-promise": "^3.0.0",
     "rss": "^1.2.2",
     "universal-analytics": "^0.4.20"
