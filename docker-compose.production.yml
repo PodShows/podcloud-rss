@@ -23,13 +23,6 @@ services:
     networks:
       - default
 
-  rss-ping-cache:
-    image: redis
-    command: ["redis-server", "--maxmemory 4gb", "--maxmemory-policy allkeys-lru"]
-    restart: always
-    networks:
-      - default
-
 networks:
   podcloud:
     external: true
