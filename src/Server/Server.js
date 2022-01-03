@@ -35,7 +35,10 @@ const send404 = function(res, content = "Feed not found") {
 
 const requestHandler = function(feedsAPI) {
   return function(req, res) {
+    console.log(`${req.method} ${req.url}`);
     const identifier = getFeedIdentifierFromRequest(req);
+
+    console.log(`Identifier: ${identifier}`);
 
     if (empty(identifier)) {
       send404(res);
