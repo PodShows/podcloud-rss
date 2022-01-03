@@ -59,7 +59,8 @@ const requestHandler = function(feedsAPI, statsAPI) {
         console.log(identifier, "current url", cur_url);
         console.log(identifier, "feed url", podcast.feed_url);
         console.log(
-          identifier, "redirect ?",
+          identifier,
+          "redirect ?",
           cur_url.indexOf(podcast.feed_url),
           cur_url.indexOf(podcast.feed_url) !== 0
         );
@@ -95,17 +96,6 @@ const requestHandler = function(feedsAPI, statsAPI) {
         res.header("Content-Type", "application/rss+xml; charset=utf-8");
 
         res.send(rss.xml({ indent: true }));
-        console.log(`Saving view for ${podcast.identifier}...`);
-        statsAPI
-          .saveView(podcast, req)
-          .then(
-            () => console.log(`View saved for ${podcast.identifier}.`),
-            err =>
-              console.error(
-                `Failed to save view for ${podcast.identifier}!`,
-                err
-              )
-          );
       })
       .catch(error => {
         console.error(`Error for feed: ${identifier}`);
